@@ -7,13 +7,6 @@
 <script src="{{asset('assets/back/js/demo.js')}}"></script>
 <script>
     $(function() {
-
-
-
-
-
-
-
         var currColor = '#3c8dbc'
         $('#color-chooser > li > a').click(function(e) {
             e.preventDefault()
