@@ -4,6 +4,7 @@
 <script src="{{asset('assets/back/js/adminlte.min.js')}}"></script>
 <script src="{{asset('assets/back/plugins/moment/moment.min.js')}}"></script>
 <script src="{{asset('assets/back/plugins/fullcalendar/main.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('assets/back/js/demo.js')}}"></script>
 <script>
     $(function() {
@@ -37,4 +38,22 @@
             $('#new-event').val('')
         })
     })
+
+    function deleteConfirmation(event, text = false) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: text ? 'Are you sure?' + text : 'Are you sure?',
+            text: "This action cannot be undone!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                event.target.submit(); // Təsdiq edildikdə formu göndər
+            }
+        });
+    }
 </script>

@@ -29,7 +29,7 @@
                     <a href="{{route('admin.categories.index')}}" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
-                            Gallery
+                            Kategoriyalar
                         </p>
                     </a>
                 </li>

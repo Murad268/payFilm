@@ -10,13 +10,7 @@
 (function ($) {
   'use strict'
 
-  setTimeout(function () {
-    if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
-      localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
-      // eslint-disable-next-line no-alert
-      alert('You load AdminLTE\'s "demo.js", \nthis file is only created for testing purposes!')
-    }
-  }, 1000)
+
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
@@ -622,18 +616,18 @@
   }, true)
   $container.append($sidebar_light_variants)
 
-  var active_sidebar_light_color = null
-  $('.main-sidebar')[0].classList.forEach(function (className) {
-    var color = className.replace('sidebar-light-', 'bg-')
-    if (sidebar_colors.indexOf(color) > -1 && active_sidebar_light_color === null) {
-      active_sidebar_light_color = color
-    }
-  })
+//   var active_sidebar_light_color = null
+//   $('.main-sidebar')[0].classList.forEach(function (className) {
+//     var color = className.replace('sidebar-light-', 'bg-')
+//     if (sidebar_colors.indexOf(color) > -1 && active_sidebar_light_color === null) {
+//       active_sidebar_light_color = color
+//     }
+//   })
 
-  if (active_sidebar_light_color !== null) {
-    $sidebar_light_variants.find('option.' + active_sidebar_light_color).prop('selected', true)
-    $sidebar_light_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_sidebar_light_color)
-  }
+//   if (active_sidebar_light_color !== null) {
+//     $sidebar_light_variants.find('option.' + active_sidebar_light_color).prop('selected', true)
+//     $sidebar_light_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_sidebar_light_color)
+//   }
 
   var logo_skins = navbar_all_colors
   $container.append('<h6>Brand Logo Variants</h6>')
@@ -651,39 +645,39 @@
     })
   })
 
-  var $brand_variants = createSkinBlock(logo_skins, function () {
-    var color = $(this).find('option:selected').attr('class')
-    var $logo = $('.brand-link')
+//   var $brand_variants = createSkinBlock(logo_skins, function () {
+//     var color = $(this).find('option:selected').attr('class')
+//     var $logo = $('.brand-link')
 
-    if (color === 'navbar-light' || color === 'navbar-white') {
-      $logo.addClass('text-black')
-    } else {
-      $logo.removeClass('text-black')
-    }
+//     if (color === 'navbar-light' || color === 'navbar-white') {
+//       $logo.addClass('text-black')
+//     } else {
+//       $logo.removeClass('text-black')
+//     }
 
-    logo_skins.forEach(function (skin) {
-      $logo.removeClass(skin)
-    })
+//     logo_skins.forEach(function (skin) {
+//       $logo.removeClass(skin)
+//     })
 
-    if (color) {
-      $(this).removeClass().addClass('custom-select mb-3 border-0').addClass(color).addClass(color !== 'navbar-light' && color !== 'navbar-white' ? 'text-light' : '')
-    } else {
-      $(this).removeClass().addClass('custom-select mb-3 border-0')
-    }
+//     if (color) {
+//       $(this).removeClass().addClass('custom-select mb-3 border-0').addClass(color).addClass(color !== 'navbar-light' && color !== 'navbar-white' ? 'text-light' : '')
+//     } else {
+//       $(this).removeClass().addClass('custom-select mb-3 border-0')
+//     }
 
-    $logo.addClass(color)
-  }, true).append($clear_btn)
-  $container.append($brand_variants)
+//     $logo.addClass(color)
+//   }, true).append($clear_btn)
+//   $container.append($brand_variants)
 
-  var active_brand_color = null
-  $('.brand-link')[0].classList.forEach(function (className) {
-    if (logo_skins.indexOf(className) > -1 && active_brand_color === null) {
-      active_brand_color = className.replace('navbar-', 'bg-')
-    }
-  })
+//   var active_brand_color = null
+//   $('.brand-link')[0].classList.forEach(function (className) {
+//     if (logo_skins.indexOf(className) > -1 && active_brand_color === null) {
+//       active_brand_color = className.replace('navbar-', 'bg-')
+//     }
+//   })
 
-  if (active_brand_color) {
-    $brand_variants.find('option.' + active_brand_color).prop('selected', true)
-    $brand_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_brand_color)
-  }
+//   if (active_brand_color) {
+//     $brand_variants.find('option.' + active_brand_color).prop('selected', true)
+//     $brand_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_brand_color)
+//   }
 })(jQuery)
