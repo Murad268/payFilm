@@ -1,8 +1,9 @@
 @extends('admin.back')
 @section('page_title', 'home categories')
 @section('content')
-
 <div class="">
+
+
     <section class="content mt-3">
         <div class="container-fluid">
             <div class="row">
@@ -12,6 +13,11 @@
                             <h3 class="card-title">
                                 <a href="{{route('admin.home-categories.create')}}" class="btn btn-primary">yeni kategoriya əlavə et</a>
                             </h3>
+                            @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session('message') }}
+                            </div>
+                            @endif
                         </div>
                         <div class="card-body">
                             <table id="example2" class="table table-bordered table-hover">

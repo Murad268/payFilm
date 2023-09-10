@@ -8,6 +8,11 @@
 </style>
 <div class="">
     <section class="content mt-3">
+        @if(session()->has('message'))
+        <div class="ml-2 alert alert-success">
+            {{ session('message') }}
+        </div>
+        @endif
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
