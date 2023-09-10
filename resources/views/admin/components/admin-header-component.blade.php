@@ -1,8 +1,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+            <div style="display: flex; column-gap: 10px; align-items: center" class="info">
+                <a class="d-block">{{$admin->name}} {{$admin->surname}}</a>
+                <a onclick="return toHref(event)" style="font-size: 10px;" href="{{route('admin.logout')}}" class="btn btn-primary">çıxış et</a>
             </div>
         </div>
         <div class="form-inline">

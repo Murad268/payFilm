@@ -52,7 +52,26 @@
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                event.target.submit(); // Təsdiq edildikdə formu göndər
+                event.target.submit();
+            }
+        });
+    }
+
+    function toHref(event, text = false) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: text ? 'Are you sure?' + text : 'Are you sure?',
+            text: "You will exit!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, exit!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Eğer kullanıcı onaylarsa, bağlantıya git
+                window.location.href = event.target.getAttribute('href');
             }
         });
     }

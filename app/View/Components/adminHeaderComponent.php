@@ -2,8 +2,10 @@
 
 namespace App\View\Components;
 
+use App\Models\Admin;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\View\Component;
 
 class adminHeaderComponent extends Component
@@ -21,6 +23,9 @@ class adminHeaderComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('admin.components.admin-header-component');
+        $cookieValue = Cookie::get('login');
+        $admin = Admin::where('login', $cookieValue)->first();
+
+        return view('admin.components.admin-header-component', compact('admin'));
     }
 }

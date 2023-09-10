@@ -17,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+Route::post('/admin/access_check', [AdminController::class, 'access_check'])->name('admin.access_check');
+Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, "index"])->name("index");
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/settings', SettingsController::class);
     Route::resource('/home-categories', HomeCategoriesController::class);
-
 });
