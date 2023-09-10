@@ -27,7 +27,6 @@
                                 <tbody>
                                     @foreach($categories as $category)
                                     <tr>
-                                    <tr>
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->getTranslation('name', app()->getLocale()) }}</td>
                                         <td>{{ $category->getTranslation('slug', app()->getLocale()) }}</td>
@@ -40,7 +39,6 @@
                                                 <input class="btn btn-danger" value="delete" type="submit">
                                             </form>
                                         </td>
-                                    </tr>
                                     </tr>
                                     @endforeach
 

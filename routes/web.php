@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoriesController;
+use App\Http\Controllers\admin\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminController::class, "index"])->name("index");
     Route::resource('/categories', CategoriesController::class);
-
+    Route::resource('/settings', SettingsController::class);
 });
