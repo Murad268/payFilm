@@ -1,9 +1,13 @@
 @extends('admin.back')
 @section('page_title', 'settings')
 @section('content')
-
+<style>
+    .content-wrapper {
+        width: max-content;
+    }
+</style>
 <div class="">
-    <section class="content">
+    <section class="content mt-3">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">

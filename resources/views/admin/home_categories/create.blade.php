@@ -7,17 +7,17 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <form method="post" action="{{route('admin.categories.store')}}">
+                    <form method="post" action="{{route('admin.home-categories.store')}}">
                         @csrf
                         <div class="card-body">
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Kategoriyanın adı {{$lang}} dilində</label>
-                                <input name="name[{{ $lang }}]" value="{{ old('cat_name.' . $lang) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="cat_name[{{ $lang }}]" value="{{ old('cat_name.' . $lang) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
                             </div>
                             @endforeach
 
-                            @error("name.$lang")
+                            @error("cat_name.$lang")
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
                             </div>
