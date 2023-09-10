@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('logo');
             $table->string('title');
             $table->string('phone');
-            $table->string('desc');
+            $table->text('desc');
             $table->string('copywrite');
             $table->string('facebook');
             $table->string('instagram');

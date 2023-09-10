@@ -1,5 +1,5 @@
 @extends('admin.back')
-@section('page_title', 'category add')
+@section('page_title', 'category edit')
 @section('content')
 <div class="">
 
