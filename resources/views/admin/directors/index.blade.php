@@ -1,5 +1,5 @@
 @extends('admin.back')
-@section('page_title', 'actors')
+@section('page_title', 'directors')
 @section('content')
 
 <div class="">
@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="{{route('admin.actors.create')}}" class="btn btn-primary">yeni aktyor əlavə et</a>
+                                <a href="{{route('admin.directors.create')}}" class="btn btn-primary">yeni rejissor əlavə et</a>
                             </h3>
 
                         </div>
@@ -24,22 +24,22 @@
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>Actor Name</th>
-                                        <th>Actor Slug</th>
-                                        <th>Actor Status</th>
+                                        <th>Category Name</th>
+                                        <th>Category Slug</th>
+                                        <th>Category Status</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($actors as $actor)
+                                    @foreach($directors as $director)
                                     <tr>
-                                        <td>{{ $actor->id }}</td>
-                                        <td>{{ $actor->getTranslation('name', app()->getLocale()) }}</td>
-                                        <td>{{ $actor->getTranslation('slug', app()->getLocale()) }}</td>
-                                        <td>{{ $actor->status }}</td>
+                                        <td>{{ $director->id }}</td>
+                                        <td>{{ $director->getTranslation('name', app()->getLocale()) }}</td>
+                                        <td>{{ $director->getTranslation('slug', app()->getLocale()) }}</td>
+                                        <td>{{ $director->status }}</td>
                                         <td>
-                                            <a href="{{route('admin.actors.edit', $actor->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
-                                            <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.actors.destroy', $actor->id)}}">
+                                            <a href="{{route('admin.directors.edit', $director->id)}}" class="btn btn-warning text-light">Rejissoru dəyiş</a>
+                                            <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.directors.destroy', $director->id)}}">
                                                 @csrf
                                                 @method("delete")
                                                 <input class="btn btn-danger" value="delete" type="submit">
@@ -51,8 +51,9 @@
                                 </tbody>
                             </table>
                             <div style="margin: 0 auto; width: max-content" class="pagination mt-2">
-                                {{ $actors->links() }}
+                                {{ $directors->links() }}
                             </div>
+
                         </div>
                     </div>
                 </div>

@@ -36,7 +36,7 @@
                             @endforeach
                             <div class="form-check">
                                 <input name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">kategoriyanın statusu</label>
+                                <label class="form-check-label" for="exampleCheck1">aktyor statusu</label>
                             </div>
                             @error('status')
                             <div class="alert alert-danger mt-2" role="alert">
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Kateqoriyanı yenilə</button>
+                            <button type="submit" class="btn btn-primary">Aktyoru yenilə</button>
                         </div>
                     </form>
                 </div>

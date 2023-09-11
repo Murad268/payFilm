@@ -14,7 +14,7 @@
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Kategoriyanın adı {{$lang}} dilində</label>
-                                <input name="name[{{ $lang }}]" value="{{ old('cat_name.' . $lang, $category->getTranslation('name', $lang)) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
+                                <input name="name[{{ $lang }}]" value="{{ old('name.' . $lang, $category->getTranslation('name', $lang)) }}" type="text" class="form-control" placeholder="Kategoriyanı adını daxil edin">
                             </div>
                             @endforeach
 

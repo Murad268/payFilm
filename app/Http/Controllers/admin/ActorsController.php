@@ -28,7 +28,7 @@ class ActorsController extends Controller
     public function store(ActorsRequest $request)
     {
         $this->actorsService->create($request);
-        return view('admin.actors.index');
+        return redirect()->route('admin.actors.index');
     }
 
 
