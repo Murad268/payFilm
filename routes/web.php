@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\ActorsController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\HomeCategoriesController;
@@ -26,4 +27,5 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/categories', CategoriesController::class);
     Route::resource('/settings', SettingsController::class);
     Route::resource('/home-categories', HomeCategoriesController::class);
+    Route::resource('/actors', ActorsController::class);
 });
