@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\DirectorsController;
 use App\Http\Controllers\admin\HomeCategoriesController;
+use App\Http\Controllers\admin\ScriptwriterController;
 use App\Http\Controllers\admin\SettingsController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,7 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/home-categories', HomeCategoriesController::class);
     Route::resource('/actors', ActorsController::class);
     Route::resource('/directors', DirectorsController::class);
+    Route::resource('/scriptwriters', ScriptwriterController::class);
+
 
 });
