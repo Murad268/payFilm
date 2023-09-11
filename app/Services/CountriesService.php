@@ -2,12 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\Categories;
-
+use App\Models\Countries;
 use App\Services\DataServices;
 use Exception;
 
-class CategoriesService
+class CountriesService
 {
     public function __construct(private DataServices $dataServices)
     {
@@ -16,7 +15,7 @@ class CategoriesService
     public function create($request)
     {
         try {
-            $categories = new Categories();
+            $categories = new Countries();
             $this->dataServices->save($categories, $request->all(), 'create');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -25,7 +24,7 @@ class CategoriesService
     public function update($request, $id)
     {
         try {
-            $category = Categories::findOrFail($id);
+            $category = Countries::findOrFail($id);
             $this->dataServices->save($category, $request->all(), 'update');
         } catch (Exception $e) {
             echo $e->getMessage();
@@ -35,7 +34,7 @@ class CategoriesService
     public function delete($id)
     {
         try {
-            $position = Categories::findOrFail($id);
+            $position = Countries::findOrFail($id);
             $position->delete();
         } catch (Exception $e) {
             echo $e->getMessage();

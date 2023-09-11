@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\ActorsController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoriesController;
+use App\Http\Controllers\admin\CountriesController;
 use App\Http\Controllers\admin\DirectorsController;
 use App\Http\Controllers\admin\HomeCategoriesController;
 use App\Http\Controllers\admin\ScriptwriterController;
@@ -32,6 +33,7 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/actors', ActorsController::class);
     Route::resource('/directors', DirectorsController::class);
     Route::resource('/scriptwriters', ScriptwriterController::class);
+    Route::resource('/countries', CountriesController::class);
 
 
 });

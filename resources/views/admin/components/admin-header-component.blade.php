@@ -67,6 +67,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.countries.index')}}" class="nav-link">
+                        <i class="nav-icon far fa-image"></i>
+                        <p>
+                            Ölkələr
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.home-categories.index')}}" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
