@@ -13,4 +13,9 @@ class Scriptwriter extends Model
     public $translatable = ['name', 'slug'];
     public $table = 'scriptwriters';
     protected $guarded = [];
+
+    public function movies()
+    {
+        return $this->belongsToMany(Movies::class, 'movies_scriptwriters', 'scriptwriters_id', 'movie_id');
+    }
 }

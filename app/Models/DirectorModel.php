@@ -13,4 +13,9 @@ class DirectorModel extends Model
     public $translatable = ['name', 'slug'];
     public $table = 'director_models';
     protected $guarded = [];
+
+    public function movies()
+    {
+        return $this->belongsToMany(Movies::class, 'movies_countries', 'director_id', 'movie_id');
+    }
 }

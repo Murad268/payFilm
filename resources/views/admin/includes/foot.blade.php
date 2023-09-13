@@ -87,34 +87,7 @@
     }
 
     $(document).ready(function() {
-        $(".js-example-basic-multiple").select2({
-            ajax: {
-                url: function() {
-                    // Get the URL from the data-url attribute of the select element
-                    return $(this).data("url");
-                },
-                dataType: "json",
-                delay: 250,
-                data: function(params) {
-                    console.log(params.term);
-                    return {
-                        q: params.term
-                    };
-                },
-                processResults: function(data) {
-                    // JSON formatında nəticə qaytarın
-                    const currentLocale = "{{ app()->getLocale() }}";
-                    return {
-                        results: data.map(item => ({
-                            id: item.id,
-                            text: item.name[currentLocale]
-                        }))
-                    };
-                },
-                cache: true,
-            },
-            minimumInputLength: 3,
-        });
+        $(".js-example-basic-multiple").select2();
 
     });
 

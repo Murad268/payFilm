@@ -14,4 +14,9 @@ class Actors extends Model
     public $translatable = ['name', 'slug'];
 
     protected $guarded = [];
+
+    public function movies()
+    {
+        return $this->belongsToMany(Movies::class, 'movies_actors', 'actor_id', 'movie_id');
+    }
 }

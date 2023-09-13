@@ -29,7 +29,7 @@ class CreateMovieRequest extends FormRequest
             $rules["poster"] = 'required|image|mimes:jpeg,jpg,png|max:2048';
             $rules["banner"] = 'required|image|mimes:jpeg,jpg,png|max:2048';
             $rules["length"] = 'required|numeric';
-            $rules["link"] = 'required';
+            $rules["link.$lang"] = 'required';
             $rules["ytrailer"] = 'required';
             $rules["quality"] = 'required';
             $rules["movie__categories"] = 'required';
@@ -43,6 +43,7 @@ class CreateMovieRequest extends FormRequest
             $rules['scriptwriters'] = 'required';
             $rules['actors'] = 'required';
             $rules['release'] = 'required';
+            $rules["desc.$lang"] = 'required';
         }
 
         return $rules;
@@ -79,8 +80,8 @@ class CreateMovieRequest extends FormRequest
             $customMessages["directors.required"] = "The directors field is required.";
             $customMessages["scriptwriters.required"] = "The scriptwriters field is required.";
             $customMessages["actors.required"] = "The actors field is required.";
+            $customMessages["desc.$lang.required"] = "The description field for language $lang is required.";
         }
-
         return $customMessages;
     }
 }

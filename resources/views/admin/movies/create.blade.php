@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <form method="post" action="{{route('admin.movies.store')}}">
+                    <form enctype="multipart/form-data" method="post" action="{{route('admin.movies.store')}}">
                         @csrf
                         <div class="card-body">
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
@@ -74,15 +74,18 @@
                                 {{ $message }}
                             </div>
                             @enderror
+                            @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie Link:</label>
-                                <input name="link" value="{{ old('link') }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
+                                <input name="link[{{ $lang }}]" value="{{ old('link.' . $lang) }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
                             </div>
-                            @error("link")
+                            @error("link.$lang")
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
+                            @endforeach
+
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie Youtube Trailer Link:</label>
                                 <input name="ytrailer" value="{{ old('ytrailer') }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
@@ -132,6 +135,9 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie countries:</label>
                                 <select style="width: 100%;" class="js-example-basic-multiple" name="countries[]" multiple="multiple" data-url="{{ route('admin.get-more-options') }}">
+                                    @foreach($countries as $country)
+                                    <option {{ in_array($country->id, old('countries') ?? []) ? 'selected' : '' }} value="{{$country->id}}">{{$country->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             @error("countries")
@@ -142,6 +148,9 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie directors:</label>
                                 <select style="width: 100%;" class="js-example-basic-multiple" name="directors[]" multiple="multiple" data-url="{{ route('admin.get-more-directors') }}">
+                                    @foreach($directors as $director)
+                                    <option {{ in_array($director->id, old('directors') ?? []) ? 'selected' : '' }} value="{{$director->id}}">{{$director->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             @error("directors")
@@ -152,7 +161,11 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie scriptwriters:</label>
                                 <select style="width: 100%;" class="js-example-basic-multiple" name="scriptwriters[]" multiple="multiple" data-url="{{ route('admin.get-more-scriptwriters') }}">
+                                    @foreach($scriptwriters as $scriptwriter)
+                                    <option {{ in_array($scriptwriter->id, old('scriptwriters') ?? []) ? 'selected' : '' }} value="{{$scriptwriter->id}}">{{$scriptwriter->name}}</option>
+                                    @endforeach
                                 </select>
+
                             </div>
                             @error("scriptwriters")
                             <div class="alert alert-danger mt-2" role="alert">
@@ -162,6 +175,9 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie actors:</label>
                                 <select style="width: 100%;" class="js-example-basic-multiple" name="actors[]" multiple="multiple" data-url="{{ route('admin.get-more-actors') }}">
+                                    @foreach($actors as $actor)
+                                    <option {{ in_array($actor->id, old('actors') ?? []) ? 'selected' : '' }}  value="{{$actor->id}}">{{$actor->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             @error("actors")
@@ -182,11 +198,11 @@
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie description {{$lang}} dilində:</label>
-                                <textarea name="desc" style="height: 500px;" id="editor">{{old('desc')}}</textarea>
+                                <textarea name="desc[{{ $lang }}]" style="height: 500px;" id="editor">{{ old('desc.' . $lang) }}</textarea>
                             </div>
                             @endforeach
 
-                            @error("desc")
+                            @error("desc.$lang")
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
                             </div>
