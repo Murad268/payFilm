@@ -1,4 +1,8 @@
 <script src="{{asset('assets/back/plugins/jquery/jquery.min.js')}}"></script>
+<!-- CKEditor 5 CDN - Classic Editor Build -->
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+
+
 <script src="{{asset('assets/back/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('assets/back/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <script src="{{asset('assets/back/js/adminlte.min.js')}}"></script>
@@ -115,26 +119,12 @@
     });
 
 
+    $(".category-movie").select2()
 
 
-
-    // document.addEventListener("input", function(e) {
-    //     if (e.target.classList.contains('select2-search__field')) {
-    //         getData('http://127.0.0.1:8000/admin/get_countries', e.target.value).then(res => {
-    //             JSON.parse(res).forEach(country => {
-    //                 const currentLocale = "{{ app()->getLocale() }}";
-    //                 const countryName = country.name[currentLocale];
-    //                 document.querySelector('.countries_select').innerHTML = ""
-    //                 document.querySelector('.countries_select').insertAdjacentHTML('beforeend',
-    //                     `<option value="${country.id}">${countryName}</option>`
-    //                 )
-    //                 if (document.querySelector('.select2-results__message')) {
-    //                     document.querySelector('.select2-results__message').style.display = "none";
-    //                 }
-    //             })
-    //         })
-    //     }
-    // })
-
-    // Define handleChange function outside of the event handler
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
 </script>

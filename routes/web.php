@@ -40,6 +40,8 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::get('/get-more-options', [CountriesController::class, 'getMoreOptions'])->name('get-more-options');
     Route::get('/get-more-directors', [DirectorsController::class, 'getMoreDirectors'])->name('get-more-directors');
     Route::get('/get-more-scriptwriters', [ScriptwriterController::class, 'getMoreScriptwriters'])->name('get-more-scriptwriters');
+    Route::get('/get-more-acors', [ActorsController::class, 'getMoreActors'])->name('get-more-actors');
+
 });
 
 

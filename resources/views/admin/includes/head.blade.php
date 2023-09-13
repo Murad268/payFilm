@@ -12,7 +12,7 @@
             border: none !important;
 
         }
-        
+
         .select2-selection__choice__remove {
             border: none !important;
             margin-left: -2px !important;
