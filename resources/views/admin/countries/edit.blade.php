@@ -34,15 +34,7 @@
                             </div>
                             @enderror
                             @endforeach
-                            <div class="form-check">
-                                <input name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">ölkə statusu</label>
-                            </div>
-                            @error('status')
-                            <div class="alert alert-danger mt-2" role="alert">
-                                {{$message}}
-                            </div>
-                            @enderror
+                      
                         </div>
 
                         <div class="card-footer">

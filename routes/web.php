@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\CountriesController;
 use App\Http\Controllers\admin\DirectorsController;
 use App\Http\Controllers\admin\HomeCategoriesController;
+use App\Http\Controllers\admin\MoviesController;
 use App\Http\Controllers\admin\ScriptwriterController;
 use App\Http\Controllers\admin\SettingsController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,12 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/directors', DirectorsController::class);
     Route::resource('/scriptwriters', ScriptwriterController::class);
     Route::resource('/countries', CountriesController::class);
+    Route::resource('/movies', MoviesController::class);
+    // Route::get('/get_countries', [CountriesController::class,'getCountries'])->name('get_countries');
+    Route::get('/get-more-options', [CountriesController::class,'getMoreOptions'])->name('get-more-options');
+
+
+
 
 
 });

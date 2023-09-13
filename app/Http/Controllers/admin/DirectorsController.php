@@ -9,6 +9,7 @@ use App\Models\Actors;
 use App\Models\DirectorModel;
 use App\Services\ActorsService;
 use App\Services\DirectorService;
+use Illuminate\Http\Request;
 
 class DirectorsController extends Controller
 {
@@ -51,5 +52,19 @@ class DirectorsController extends Controller
     {
         $this->directorService->delete($id);
         return redirect()->route('admin.directors.index')->with('message', 'the information was deleted from the database');
+    }
+
+
+    public function getDirectors(Request $request)
+    {
+        $searchTerm = $request->q;
+
+        if ($request->q) {
+            $countries = DirectorModel::where('name', 'like', '%' . $searchTerm . '%')->get();
+        } else {
+            $countries = [];
+        }
+
+        return response()->json($countries);
     }
 }

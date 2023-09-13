@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\countries\CountriesRequest;
 use App\Models\Countries;
 use App\Services\CountriesService;
+use Illuminate\Http\Request;
+
 
 class CountriesController extends Controller
 {
@@ -48,5 +50,20 @@ class CountriesController extends Controller
     {
         $this->countriesService->delete($id);
         return redirect()->route('admin.countries.index')->with('message', 'the information was deleted from the database');
+    }
+
+
+
+
+    public function getMoreOptions(Request $request)
+    {
+        $query = $request->input('q');
+        $locale = app()->getLocale();
+
+        $results = Countries::where("name->$locale", 'LIKE', "%$query%")
+            ->limit(10)
+            ->get();
+
+        return response()->json($results);
     }
 }

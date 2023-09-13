@@ -5,7 +5,13 @@
 <script src="{{asset('assets/back/plugins/moment/moment.min.js')}}"></script>
 <script src="{{asset('assets/back/plugins/fullcalendar/main.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <script src="{{asset('assets/back/js/demo.js')}}"></script>
+<script>
+    var currentLocale = "{{ app()->getLocale() }}";
+</script>
+
 <script>
     $(function() {
         var currColor = '#3c8dbc'
@@ -75,4 +81,57 @@
             }
         });
     }
+
+    $(document).ready(function() {
+        $(".js-example-basic-multiple").select2({
+            ajax: {
+                url: `http://127.0.0.1:8000/admin/get-more-options`,
+                dataType: "json",
+                delay: 250,
+                data: function(params) {
+                    console.log(params.term);
+                    return {
+                        q: params.term
+                    };
+                },
+                processResults: function(data) {
+                    // JSON formatında nəticə qaytarın
+                    const currentLocale = "{{ app()->getLocale() }}";
+                    return {
+                        results: data.map(item => ({
+                            id: item.id,
+                            text: item.name[currentLocale]
+                        }))
+                    };
+                },
+
+                cache: true,
+            },
+            minimumInputLength: 3,
+        });
+    });
+
+
+
+
+
+    // document.addEventListener("input", function(e) {
+    //     if (e.target.classList.contains('select2-search__field')) {
+    //         getData('http://127.0.0.1:8000/admin/get_countries', e.target.value).then(res => {
+    //             JSON.parse(res).forEach(country => {
+    //                 const currentLocale = "{{ app()->getLocale() }}";
+    //                 const countryName = country.name[currentLocale];
+    //                 document.querySelector('.countries_select').innerHTML = ""
+    //                 document.querySelector('.countries_select').insertAdjacentHTML('beforeend',
+    //                     `<option value="${country.id}">${countryName}</option>`
+    //                 )
+    //                 if (document.querySelector('.select2-results__message')) {
+    //                     document.querySelector('.select2-results__message').style.display = "none";
+    //                 }
+    //             })
+    //         })
+    //     }
+    // })
+
+    // Define handleChange function outside of the event handler
 </script>

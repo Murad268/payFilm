@@ -26,7 +26,6 @@
                                         <th>id</th>
                                         <th>Country Name</th>
                                         <th>Country Slug</th>
-                                        <th>Country Status</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
@@ -36,9 +35,8 @@
                                         <td>{{ $country->id }}</td>
                                         <td>{{ $country->getTranslation('name', app()->getLocale()) }}</td>
                                         <td>{{ $country->getTranslation('slug', app()->getLocale()) }}</td>
-                                        <td>{{ $country->status }}</td>
                                         <td>
-                                            <a href="{{route('admin.countries.edit', $country->id)}}" class="btn btn-warning text-light">Rejissoru dəyiş</a>
+                                            <a href="{{route('admin.countries.edit', $country->id)}}" class="btn btn-warning text-light">Ölkəni dəyiş</a>
                                             <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.countries.destroy', $country->id)}}">
                                                 @csrf
                                                 @method("delete")
