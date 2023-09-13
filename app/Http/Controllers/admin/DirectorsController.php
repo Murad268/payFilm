@@ -54,17 +54,15 @@ class DirectorsController extends Controller
         return redirect()->route('admin.directors.index')->with('message', 'the information was deleted from the database');
     }
 
-
-    public function getDirectors(Request $request)
+    public function getMoreDirectors(Request $request)
     {
-        $searchTerm = $request->q;
+        $query = $request->input('q');
+        $locale = app()->getLocale();
 
-        if ($request->q) {
-            $countries = DirectorModel::where('name', 'like', '%' . $searchTerm . '%')->get();
-        } else {
-            $countries = [];
-        }
+        $results = DirectorModel::where("name->$locale", 'LIKE', "%$query%")
+            ->limit(10)
+            ->get();
 
-        return response()->json($countries);
+        return response()->json($results);
     }
 }

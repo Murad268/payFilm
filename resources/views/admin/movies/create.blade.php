@@ -7,29 +7,23 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <form method="post" action="{{route('admin.home-categories.store')}}">
+                    <form method="post" action="{{route('admin.movies.store')}}">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <select style="width: 100%;" class="js-example-basic-multiple countries_select" name="countries[]" multiple="multiple">
-                                 
+                                <select style="width: 100%;" class="js-example-basic-multiple" name="countries[]" multiple="multiple" data-url="{{ route('admin.get-more-options') }}">
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select style="width: 100%;" class="js-example-basic-multiple countries_select" name="countries[]" multiple="multiple">
-                                    @forEach($directors as $director)
-                                    <option value="{{$director->id}}">{{$director->name}}</option>
-                                    @endforeach
+                                <select style="width: 100%;" class="js-example-basic-multiple" name="directors[]" multiple="multiple" data-url="{{ route('admin.get-more-directors') }}">
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select style="width: 100%;" class="js-example-basic-multiple countries_select" name="countries[]" multiple="multiple">
-                                    @forEach($sks as $sk)
-                                    <option value="{{$sk->id}}">{{$sk->name}}</option>
-                                    @endforeach
+                                <select style="width: 100%;" class="js-example-basic-multiple" name="countries[]" multiple="scriptwriters" data-url="{{ route('admin.get-more-scriptwriters') }}">
                                 </select>
                             </div>
                         </div>
+
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Kateqoriyanı əlavə et</button>
                         </div>

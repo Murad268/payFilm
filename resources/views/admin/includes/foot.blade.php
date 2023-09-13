@@ -85,7 +85,10 @@
     $(document).ready(function() {
         $(".js-example-basic-multiple").select2({
             ajax: {
-                url: `http://127.0.0.1:8000/admin/get-more-options`,
+                url: function() {
+                    // Get the URL from the data-url attribute of the select element
+                    return $(this).data("url");
+                },
                 dataType: "json",
                 delay: 250,
                 data: function(params) {
@@ -104,11 +107,11 @@
                         }))
                     };
                 },
-
                 cache: true,
             },
             minimumInputLength: 3,
         });
+
     });
 
 
