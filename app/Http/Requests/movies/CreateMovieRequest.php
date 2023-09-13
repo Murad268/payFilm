@@ -45,8 +45,6 @@ class CreateMovieRequest extends FormRequest
             $rules['release'] = 'required';
         }
 
-
-
         return $rules;
     }
 
@@ -60,8 +58,28 @@ class CreateMovieRequest extends FormRequest
             $customMessages["name.$lang.required"] = "The name field for language $lang is required.";
             $customMessages["slug.$lang.required"] = "The slug field for language $lang is required.";
             $customMessages["slug.$lang.regex"] = "The slug field for language $lang must not contain spaces.";
+            $customMessages["poster.required"] = "The poster field is required.";
+            $customMessages["poster.image"] = "The poster must be an image.";
+            $customMessages["poster.mimes"] = "The poster must be a JPEG, JPG, or PNG image.";
+            $customMessages["poster.max"] = "The poster may not be larger than 2048 kilobytes.";
+            $customMessages["banner.required"] = "The banner field is required.";
+            $customMessages["banner.image"] = "The banner must be an image.";
+            $customMessages["banner.mimes"] = "The banner must be a JPEG, JPG, or PNG image.";
+            $customMessages["banner.max"] = "The banner may not be larger than 2048 kilobytes.";
+            $customMessages["length.required"] = "The length field is required.";
+            $customMessages["length.numeric"] = "The length must be a number.";
+            $customMessages["link.required"] = "The link field is required.";
+            $customMessages["ytrailer.required"] = "The YouTube trailer field is required.";
+            $customMessages["quality.required"] = "The quality field is required.";
+            $customMessages["movie__categories.required"] = "The movie categories field is required.";
+            $customMessages["categories.required"] = "The categories field is required.";
+            $customMessages["release.required"] = "The release field is required.";
+            $customMessages["home__categories.required"] = "The home categories field is required.";
+            $customMessages["countries.required"] = "The countries field is required.";
+            $customMessages["directors.required"] = "The directors field is required.";
+            $customMessages["scriptwriters.required"] = "The scriptwriters field is required.";
+            $customMessages["actors.required"] = "The actors field is required.";
         }
-
 
         return $customMessages;
     }

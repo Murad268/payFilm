@@ -2,7 +2,6 @@
 @section('page_title', 'movie add')
 @section('content')
 <div class="">
-
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -108,7 +107,7 @@
                                 <label for="exampleInputPassword1">Movie category:</label>
                                 <select name="movie__categories" id="" class="form-control category-movie">
                                     @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    <option {{old('movie__categories') == $category->id?'selected':""}} value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -121,7 +120,7 @@
                                 <label for="exampleInputPassword1">Movie home category:</label>
                                 <select name="home__categories" id="" class="form-control">
                                     @foreach($homeCategories as $homeCategory)
-                                    <option value="{{$homeCategory->id}}">{{$homeCategory->cat_name}}</option>
+                                    <option {{old('home__categories') == $homeCategory->id?'selected':""}} value="{{$homeCategory->id}}">{{$homeCategory->cat_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -130,9 +129,6 @@
                                 {{ $message }}
                             </div>
                             @enderror
-
-
-
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie countries:</label>
                                 <select style="width: 100%;" class="js-example-basic-multiple" name="countries[]" multiple="multiple" data-url="{{ route('admin.get-more-options') }}">
@@ -175,9 +171,22 @@
                             @enderror
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie Release date::</label>
-                                <textarea name="release" style="height: 500px;" id="editor"></textarea>
+                                <input value="{{old('release')}}" type="date" name="release" class="form-control" id="">
                             </div>
                             @error("release")
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ $message }}
+                            </div>
+                            @enderror
+
+                            @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Movie description {{$lang}} dilində:</label>
+                                <textarea name="desc" style="height: 500px;" id="editor">{{old('desc')}}</textarea>
+                            </div>
+                            @endforeach
+
+                            @error("desc")
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
                             </div>
