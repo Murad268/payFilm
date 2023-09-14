@@ -44,17 +44,7 @@ class ActorsController extends Controller
         $this->actorsService->update($request, $id);
         return redirect()->route('admin.actors.index')->with("message", "the information has been updated to the database");
     }
-    public function getMoreActors(Request $request)
-    {
-        $query = $request->input('q');
-        $locale = app()->getLocale();
-
-        $results = Actors::where("name->$locale", 'LIKE', "%$query%")
-            ->limit(10)
-            ->get();
-
-        return response()->json($results);
-    }
+ 
     public function destroy($id)
     {
         $this->actorsService->delete($id);

@@ -42,38 +42,9 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.actors.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Aktyorlar
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.directors.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Rejisorlar
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.scriptwriters.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Ssenaristlər
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.countries.index')}}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Ölkələr
-                        </p>
-                    </a>
-                </li>
+             
+
+
 
                 <li class="nav-item">
                     <a href="{{route('admin.movies.index')}}" class="nav-link">

@@ -54,15 +54,5 @@ class DirectorsController extends Controller
         return redirect()->route('admin.directors.index')->with('message', 'the information was deleted from the database');
     }
 
-    public function getMoreDirectors(Request $request)
-    {
-        $query = $request->input('q');
-        $locale = app()->getLocale();
 
-        $results = DirectorModel::where("name->$locale", 'LIKE', "%$query%")
-            ->limit(10)
-            ->get();
-
-        return response()->json($results);
-    }
 }

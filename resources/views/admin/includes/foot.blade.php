@@ -86,13 +86,7 @@
         });
     }
 
-    $(document).ready(function() {
-        $(".js-example-basic-multiple").select2();
 
-    });
-
-
-    $(".category-movie").select2()
 
 
     ClassicEditor

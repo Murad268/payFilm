@@ -14,23 +14,78 @@
                                 <label for="exampleInputPassword1">Film adı {{$lang}} dilində</label>
                                 <input name="name[{{ $lang }}]" value="{{ old('name.' . $lang) }}" type="text" class="form-control" placeholder="Filmin adını daxil edin">
                             </div>
-                            @endforeach
                             @error("name.$lang")
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
+                            @endforeach
+                            @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Aktyorlar {{$lang}} dilində</label>
+                                <input name="actors[{{ $lang }}]" value="{{ old('actors.' . $lang) }}" type="text" class="form-control" placeholder="Aktyorların adını daxil edin">
+                            </div>
+                            @error("actors.$lang")
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            @endforeach
+                            @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Rejissroların adı {{$lang}} dilində</label>
+                                <input name="directors[{{ $lang }}]" value="{{ old('directors.' . $lang) }}" type="text" class="form-control" placeholder="Rejissroların adını daxil edin">
+                            </div>
+                            @error("directors.$lang")
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            @endforeach
+
+
+                            @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Ssenaristlərin adı {{$lang}} dilində</label>
+                                <input name="scriptwriters[{{ $lang }}]" value="{{ old('scriptwriters.' . $lang) }}" type="text" class="form-control" placeholder="Ssenaristləri daxil edin">
+                            </div>
+                            @error("scriptwriters.$lang")
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            @endforeach
+
+
+                            @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Ölkələrin adı {{$lang}} dilində</label>
+                                <input name="countries[{{ $lang }}]" value="{{ old('countries.' . $lang) }}" type="text" class="form-control" placeholder="Ölkələrin adını daxil edin">
+                            </div>
+                            @error("countries.$lang")
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            @endforeach
+
+
+
+
+
+
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Film slug {{$lang}} dilində</label>
                                 <input name="slug[{{ $lang }}]" value="{{ old('slug.' . $lang) }}" type="text" class="form-control" placeholder="Filmin adını daxil edin">
                             </div>
-                            @endforeach
                             @error("slug.$lang")
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
+                            @endforeach
+
                             <div class="form-group">
                                 <label for="exampleInputFile">Movie Poster</label>
                                 <div class="input-group">
@@ -132,59 +187,10 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Movie countries:</label>
-                                <select style="width: 100%;" class="js-example-basic-multiple" name="countries[]" multiple="multiple" data-url="{{ route('admin.get-more-options') }}">
-                                    @foreach($countries as $country)
-                                    <option {{ in_array($country->id, old('countries') ?? []) ? 'selected' : '' }} value="{{$country->id}}">{{$country->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            @error("countries")
-                            <div class="alert alert-danger mt-2" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Movie directors:</label>
-                                <select style="width: 100%;" class="js-example-basic-multiple" name="directors[]" multiple="multiple" data-url="{{ route('admin.get-more-directors') }}">
-                                    @foreach($directors as $director)
-                                    <option {{ in_array($director->id, old('directors') ?? []) ? 'selected' : '' }} value="{{$director->id}}">{{$director->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            @error("directors")
-                            <div class="alert alert-danger mt-2" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Movie scriptwriters:</label>
-                                <select style="width: 100%;" class="js-example-basic-multiple" name="scriptwriters[]" multiple="multiple" data-url="{{ route('admin.get-more-scriptwriters') }}">
-                                    @foreach($scriptwriters as $scriptwriter)
-                                    <option {{ in_array($scriptwriter->id, old('scriptwriters') ?? []) ? 'selected' : '' }} value="{{$scriptwriter->id}}">{{$scriptwriter->name}}</option>
-                                    @endforeach
-                                </select>
 
-                            </div>
-                            @error("scriptwriters")
-                            <div class="alert alert-danger mt-2" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Movie actors:</label>
-                                <select style="width: 100%;" class="js-example-basic-multiple" name="actors[]" multiple="multiple" data-url="{{ route('admin.get-more-actors') }}">
-                                    @foreach($actors as $actor)
-                                    <option {{ in_array($actor->id, old('actors') ?? []) ? 'selected' : '' }}  value="{{$actor->id}}">{{$actor->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            @error("actors")
-                            <div class="alert alert-danger mt-2" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
+
+
+
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie Release date::</label>
                                 <input value="{{old('release')}}" type="date" name="release" class="form-control" id="">

@@ -29,18 +29,14 @@ class MoviesController extends Controller
 
         $categories = Categories::all();
         $homeCategories = HomeCategories::all();
-        $countries = Countries::all();
-        $directors = DirectorModel::all();
-        $scriptwriters = Scriptwriter::all();
-        $actors = Actors::all();
 
-        return view('admin.movies.create', compact('homeCategories', 'categories', 'actors', 'countries', 'directors', 'scriptwriters', "actors" ));
+
+        return view('admin.movies.create', compact('homeCategories', 'categories',  ));
     }
 
     public function store(CreateMovieRequest $request)
     {
-        $this->movieService->create($request);
-        // return redirect()->route('admin.movies.index')->with("message", "The information was added to the database");
+       
         dd($request->all());
     }
 }

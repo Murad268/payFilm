@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string("link");
             $table->string('ytrailer');
             $table->string("quality");
+            $table->text('actors');
+            $table->text('scriptwriters');
+            $table->text('directors');
+            $table->text('countries');
             $table->unsignedBigInteger("movie_category_id");
             $table->unsignedBigInteger("movie_home_category_id");;
             $table->string("release");

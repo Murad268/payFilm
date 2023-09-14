@@ -52,15 +52,5 @@ class ScriptwriterController extends Controller
     }
 
 
-    public function getMoreScriptwriters(Request $request)
-    {
-        $query = $request->input('q');
-        $locale = app()->getLocale();
-
-        $results = Scriptwriter::where("name->$locale", 'LIKE', "%$query%")
-            ->limit(10)
-            ->get();
-
-        return response()->json($results);
-    }
+  
 }
