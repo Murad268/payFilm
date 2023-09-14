@@ -19,15 +19,8 @@ class MovieService
         $data = $request->all();
         $data['poster'] = $result;
         $data['banner'] = $result1;
-        unset($data['countries']);
-        unset($data['actors']);
-        unset($data['scriptwriters']);
-        unset($data['directors']);
-
-
-
         $portfolio = new Movies();
-        $this->dataServices->save($portfolio, $data, 'create', 'services', $request->countries);
+        $this->dataServices->save($portfolio, $data, 'create');
     }
 
 
@@ -55,14 +48,14 @@ class MovieService
     }
 
 
+
     public function delete($id)
     {
         try {
             $portfolio = Movies::findOrFail($id);
-            if ($portfolio->delete()) {
-                $portfolio->services()->sync([]);
-            }
-            $this->imageService->deleteImage('assets/front/images/', $portfolio->portfolio_item_img);
+      
+            $this->imageService->deleteImage('assets/front/images/', $portfolio->banner);
+            $this->imageService->deleteImage('assets/front/images/', $portfolio->poster);
         } catch (Exception $e) {
             echo $e->getMessage();
         }

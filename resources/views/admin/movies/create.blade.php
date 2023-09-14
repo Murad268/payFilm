@@ -1,6 +1,7 @@
 @extends('admin.back')
 @section('page_title', 'movie add')
 @section('content')
+
 <div class="">
     <section class="content">
         <div class="container-fluid">
@@ -163,22 +164,22 @@
                             @enderror
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie category:</label>
-                                <select name="movie__categories" id="" class="form-control category-movie">
+                                <select name="movie_category_id" id="" class="form-control category-movie">
                                     @foreach($categories as $category)
-                                    <option {{old('movie__categories') == $category->id?'selected':""}} value="{{$category->id}}">{{$category->name}}</option>
+                                    <option {{old('movie_category_id') == $category->id?'selected':""}} value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            @error("movie__categories")
+                            @error("movie_category_id")
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie home category:</label>
-                                <select name="home__categories" id="" class="form-control">
+                                <select name="movie_home_category_id" id="" class="form-control">
                                     @foreach($homeCategories as $homeCategory)
-                                    <option {{old('home__categories') == $homeCategory->id?'selected':""}} value="{{$homeCategory->id}}">{{$homeCategory->cat_name}}</option>
+                                    <option {{old('movie_home_category_id') == $homeCategory->id?'selected':""}} value="{{$homeCategory->id}}">{{$homeCategory->cat_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -214,7 +215,7 @@
                             </div>
                             @enderror
                             <div class="form-check">
-                                <input name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <input value="1" name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">film statusu</label>
                             </div>
                             @error('status')

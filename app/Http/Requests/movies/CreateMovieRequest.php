@@ -31,13 +31,11 @@ class CreateMovieRequest extends FormRequest
             $rules["length"] = 'required|numeric';
             $rules["link.$lang"] = 'required';
             $rules["ytrailer"] = 'required';
-            $rules["quality"] = 'required';
-            $rules["movie__categories"] = 'required';
-            $rules["categories"] = 'required';
-            $rules["categories"] = 'required';
+
+
             $rules['release'] = 'required';
-            $rules['movie__categories'] = 'required';
-            $rules['home__categories'] = 'required';
+            $rules['movie_category_id'] = 'required';
+            $rules['movie_home_category_id'] = 'required';
             $rules["countries.$lang"] = 'required';
             $rules["directors.$lang"] = 'required';
             $rules["scriptwriters.$lang"] = 'required';
@@ -71,11 +69,9 @@ class CreateMovieRequest extends FormRequest
             $customMessages["length.numeric"] = "The length must be a numeric value.";
             $customMessages["link.$lang.required"] = "The link field for language $lang is required.";
             $customMessages["ytrailer.required"] = "The YouTube trailer field is required.";
-            $customMessages["quality.required"] = "The quality field is required.";
-            $customMessages["movie__categories.required"] = "The movie categories field is required.";
-            $customMessages["categories.required"] = "The categories field is required.";
+            $customMessages["movie_category_id.required"] = "The movie categories field is required.";
             $customMessages["release.required"] = "The release field is required.";
-            $customMessages["home__categories.required"] = "The home categories field is required.";
+            $customMessages["movie_category_id.required"] = "The home categories field is required.";
             $customMessages["countries.$lang.required"] = "The countries field for language $lang is required.";
             $customMessages["directors.$lang.required"] = "The directors field for language $lang is required.";
             $customMessages["scriptwriters.$lang.required"] = "The scriptwriters field for language $lang is required.";

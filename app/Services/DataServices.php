@@ -10,12 +10,11 @@ class DataServices
 
         if ($proccess == 'create') {
             if (isset($data['status'])) {
-                if ((bool) $data['status'] == 1) {
-                    $data['status'] = (bool) $data['status'];
-                } else {
-                    $data['status'] = 0;
-                }
+                $data['status'] = (bool) $data['status'];
+            } else {
+                $data['status'] = 0;
             }
+
             $create = $model->create($data);
 
             if ($sync) {

@@ -10,25 +10,17 @@ class Movies extends Model
 {
     use HasFactory;
     use HasTranslations;
-    public $translatable = ['name', 'slug', "desc"];
+    public $translatable = ['name', 'slug', "link", "actors", "directors", "scriptwriters", "desc", "countries"];
+    protected $guarded = [];
 
-    public function actors()
+    public function movie_categories()
     {
-        return $this->belongsToMany(Actors::class, 'movies_actors', 'movie_id', 'actor_id');
+        return $this->hasOne(Categories::class, 'id', 'movie_category_id');
     }
 
-    public function countries()
-    {
-        return $this->belongsToMany(Actors::class, 'movies_countries', 'movie_id', 'country_id');
-    }
 
-    public function directors()
+    public function movie_home_categories()
     {
-        return $this->belongsToMany(Actors::class, 'movies_directors', 'movie_id', 'directors_id');
-    }
-
-    public function scriptwriters()
-    {
-        return $this->belongsToMany(Actors::class, 'movies_scriptwriters', 'movie_id', 'scriptwriters_id');
+        return $this->hasOne(HomeCategories::class, 'id', 'movie_home_category_id');
     }
 }
