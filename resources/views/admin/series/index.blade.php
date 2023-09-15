@@ -29,9 +29,23 @@
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>Director Name</th>
-                                        <th>Director Slug</th>
-                                        <th>Director Status</th>
+                                        <th>Movie Name</th>
+                                        <th>Movie Slug</th>
+                                        <th>Movie Poster</th>
+                                        <th>Movie Banner</th>
+                                        <th>Movie Length</th>
+                                        <th>Movie Link</th>
+                                        <th>Movie Youtube Trailer</th>
+                                        <th>Movie Quality</th>
+                                        <th>Movie Actors</th>
+                                        <th>Movie Scriptwriters</th>
+                                        <th>Movie Directors</th>
+                                        <th>Movie Countries</th>
+                                        <th>Movie Category</th>
+                                        <th>Movie Home Category</th>
+                                        <th>Movie Release Date</th>
+                                        <th>Movie Description</th>
+                                        <th>Movie Status</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
