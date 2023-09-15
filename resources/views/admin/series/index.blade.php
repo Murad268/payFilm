@@ -77,7 +77,7 @@
                                         <td>{{$serie->release}}</td>
                                         <td>{!! $serie->getTranslation('desc', app()->getLocale()) !!}</td>
                                         <td>
-                                            @if($category->status)
+                                            @if($serie->status)
                                             <div class="btn btn-danger swalDefaultError">active</div>
                                             @else
                                             <div class="btn btn-danger swalDefaultError">passive</div>

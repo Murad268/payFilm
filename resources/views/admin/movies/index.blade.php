@@ -5,13 +5,16 @@
     .card-body {
         overflow-x: scroll;
     }
-    td, th, tr {
+
+    td,
+    th,
+    tr {
         width: max-content;
     }
+
     .not-found {
         font-size: 30px;
     }
-
 </style>
 <div class="">
     <section class="content mt-3">
@@ -77,7 +80,13 @@
                                         <td>{{ $movie->movie_home_categories->cat_name }}</td>
                                         <td>{{$movie->release}}</td>
                                         <td>{!! $movie->getTranslation('desc', app()->getLocale()) !!}</td>
-                                        <td>{{$movie->status}}</td>
+                                        <td>
+                                            @if($movie->status)
+                                            <div class="btn btn-danger swalDefaultError">active</div>
+                                            @else
+                                            <div class="btn btn-danger swalDefaultError">passive</div>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{route('admin.movies.edit', $movie->id)}}" class="btn btn-warning text-light">Filmi dəyiş</a>
                                             <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.movies.destroy', $movie->id)}}">
