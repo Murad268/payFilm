@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <form enctype="multipart/form-data" method="post" action="{{route('admin.movies.store')}}">
+                    <form enctype="multipart/form-data" method="post" action="{{route('admin.series.store')}}">
                         @csrf
                         <div class="card-body">
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
