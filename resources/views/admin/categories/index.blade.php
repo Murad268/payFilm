@@ -36,7 +36,13 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->getTranslation('name', app()->getLocale()) }}</td>
                                         <td>{{ $category->getTranslation('slug', app()->getLocale()) }}</td>
-                                        <td>{{ $category->status }}</td>
+                                        <td>
+                                            @if($category->status)
+                                            <div class="btn btn-danger swalDefaultError">active</div>
+                                            @else
+                                            <div class="btn btn-danger swalDefaultError">passive</div>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{route('admin.categories.edit', $category->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
                                             <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.categories.destroy', $category->id)}}">

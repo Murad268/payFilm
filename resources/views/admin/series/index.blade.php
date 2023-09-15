@@ -76,7 +76,13 @@
                                         <td>{{ $serie->movie_home_categories->cat_name }}</td>
                                         <td>{{$serie->release}}</td>
                                         <td>{!! $serie->getTranslation('desc', app()->getLocale()) !!}</td>
-                                        <td>{{$serie->status}}</td>
+                                        <td>
+                                            @if($category->status)
+                                            <div class="btn btn-danger swalDefaultError">active</div>
+                                            @else
+                                            <div class="btn btn-danger swalDefaultError">passive</div>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{route('admin.series.edit', $serie->id)}}" class="btn btn-warning text-light">Serialı dəyiş</a>
                                             <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.series.destroy', $serie->id)}}">
