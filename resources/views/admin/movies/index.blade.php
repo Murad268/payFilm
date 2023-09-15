@@ -2,9 +2,16 @@
 @section('page_title', 'movies')
 @section('content')
 <style>
-    .content-wrapper {
+    .card-body {
+        overflow-x: scroll;
+    }
+    td, th, tr {
         width: max-content;
     }
+    .not-found {
+        font-size: 30px;
+    }
+
 </style>
 <div class="">
     <section class="content mt-3">
@@ -23,6 +30,7 @@
                             @endif
                         </div>
                         <div class="card-body">
+                            @if($movies->count())
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -65,17 +73,13 @@
                                         <td>{{ $movie->getTranslation('scriptwriters', app()->getLocale()) }}</td>
                                         <td>{{ $movie->getTranslation('directors', app()->getLocale()) }}</td>
                                         <td>{{ $movie->getTranslation('countries', app()->getLocale()) }}</td>
-
-
                                         <td>{{ $movie->movie_categories->name }}</td>
                                         <td>{{ $movie->movie_home_categories->cat_name }}</td>
-
                                         <td>{{$movie->release}}</td>
                                         <td>{!! $movie->getTranslation('desc', app()->getLocale()) !!}</td>
-
                                         <td>{{$movie->status}}</td>
                                         <td>
-                                            <a href="{{route('admin.movies.edit', $movie->id)}}" class="btn btn-warning text-light">Rejissoru dəyiş</a>
+                                            <a href="{{route('admin.movies.edit', $movie->id)}}" class="btn btn-warning text-light">Filmi dəyiş</a>
                                             <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.movies.destroy', $movie->id)}}">
                                                 @csrf
                                                 @method("delete")
@@ -86,7 +90,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
+                            @else
+                            <div class="not-found">Data Not Found</div>
+                            @endif
                             <div style="margin: 0 auto; width: max-content" class="pagination mt-2">
                                 {{ $movies->links() }}
                             </div>

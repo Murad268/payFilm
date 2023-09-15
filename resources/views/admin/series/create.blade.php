@@ -189,7 +189,7 @@
 
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Release date::</label>
+                                <label for="exampleInputPassword1">Movie Release date:</label>
                                 <input value="{{old('release')}}" type="date" name="release" class="form-control" id="">
                             </div>
                             @error("release")
@@ -222,7 +222,7 @@
                         </div>
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Film əlavə et</button>
+                            <button type="submit" class="btn btn-primary">Serial əlavə et</button>
                         </div>
                     </form>
                 </div>

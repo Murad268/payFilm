@@ -2,9 +2,14 @@
 @section('page_title', 'directors')
 @section('content')
 <style>
-    .content-wrapper {
-        max-width: max-content;
-        width: 100%;
+    .card-body {
+        overflow-x: scroll;
+    }
+
+
+
+    .not-found {
+        font-size: 30px;
     }
 </style>
 <div class="">
@@ -17,9 +22,9 @@
                             <h3 class="card-title">
                                 <a href="{{route('admin.series.create')}}" class="btn btn-primary">yeni serial əlavə et</a>
                             </h3>
-
                         </div>
                         <div class="card-body">
+                            @if($series->count())
                             @if(session()->has('message'))
                             <div class="alert alert-success">
                                 {{ session('message') }}
@@ -67,17 +72,13 @@
                                         <td>{{ $serie->getTranslation('scriptwriters', app()->getLocale()) }}</td>
                                         <td>{{ $serie->getTranslation('directors', app()->getLocale()) }}</td>
                                         <td>{{ $serie->getTranslation('countries', app()->getLocale()) }}</td>
-
-
                                         <td>{{ $serie->movie_categories->name }}</td>
                                         <td>{{ $serie->movie_home_categories->cat_name }}</td>
-
                                         <td>{{$serie->release}}</td>
                                         <td>{!! $serie->getTranslation('desc', app()->getLocale()) !!}</td>
-
                                         <td>{{$serie->status}}</td>
                                         <td>
-                                            <a href="{{route('admin.series.edit', $serie->id)}}" class="btn btn-warning text-light">Rejissoru dəyiş</a>
+                                            <a href="{{route('admin.series.edit', $serie->id)}}" class="btn btn-warning text-light">Serialı dəyiş</a>
                                             <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.series.destroy', $serie->id)}}">
                                                 @csrf
                                                 @method("delete")
@@ -88,10 +89,12 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            @else
+                            <div class="not-found">Data Not Found</div>
+                            @endif
                             <div style="margin: 0 auto; width: max-content" class="pagination mt-2">
                                 {{ $series->links() }}
                             </div>
-
                         </div>
                     </div>
                 </div>

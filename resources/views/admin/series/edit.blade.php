@@ -1,13 +1,12 @@
 @extends('admin.back')
 @section('page_title', 'movie edit')
 @section('content')
-
 <div class="">
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <form enctype="multipart/form-data" method="post" action="{{route('admin.movies.update', $serie->id)}}">
+                    <form enctype="multipart/form-data" method="post" action="{{route('admin.series.update', $serie->id)}}">
                         @csrf
                         @method('put')
                         <div class="card-body">
@@ -70,11 +69,6 @@
                             </div>
                             @enderror
                             @endforeach
-
-
-
-
-
 
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
@@ -191,7 +185,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Release date::</label>
+                                <label for="exampleInputPassword1">Movie Release date:</label>
                                 <input value="{{old('release', $serie->release)}}" type="date" name="release" class="form-control" id="">
                             </div>
                             @error("release")
@@ -199,22 +193,20 @@
                                 {{ $message }}
                             </div>
                             @enderror
-
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie description {{$lang}} dilində:</label>
                                 <textarea name="desc[{{ $lang }}]" style="height: 500px;" id="editor">{{ old('desc.' . $lang, $serie->getTranslation('desc', app()->getLocale()) ) }}</textarea>
                             </div>
                             @endforeach
-
                             @error("desc.$lang")
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
                             <div class="form-check">
-                                <input  {{old('status', $serie->status) == 1?'checked':""}} value="1" name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">film statusu</label>
+                                <input {{old('status', $serie->status) == 1?'checked':""}} value="1" name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Serial statusu</label>
                             </div>
                             @error('status')
                             <div class="alert alert-danger mt-2" role="alert">
@@ -222,9 +214,8 @@
                             </div>
                             @enderror
                         </div>
-
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Film əlavə et</button>
+                            <button type="submit" class="btn btn-primary">Serialı yenilə</button>
                         </div>
                     </form>
                 </div>

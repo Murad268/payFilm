@@ -26,7 +26,6 @@ class MovieService
 
     public function update($request, $id)
     {
-
         try {
             $portfolio = Movies::findOrFail($id);
             $result = $this->imageService->updateImage($request, 'assets/front/images/', 'poster', $portfolio->poster);

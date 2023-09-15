@@ -9,6 +9,7 @@ class DataServices
     {
 
         if ($proccess == 'create') {
+
             if (isset($data['status'])) {
                 $data['status'] = (bool) $data['status'];
             } else {
@@ -24,10 +25,11 @@ class DataServices
             }
         } else {
             // Make sure $data is an array before calling update
-            if (!is_array($data)) {
-                $data = ['status' => $data]; // Assuming you want to update the 'status' field
+            if (isset($data['status'])) {
+                $data['status'] = (bool) $data['status'];
+            } else {
+                $data['status'] = 0;
             }
-
             $update = $model->update($data);
 
             if ($sync) {

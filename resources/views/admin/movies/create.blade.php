@@ -43,8 +43,6 @@
                             </div>
                             @enderror
                             @endforeach
-
-
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Ssenaristlərin adı {{$lang}} dilində</label>
@@ -185,11 +183,8 @@
                             </div>
                             @enderror
 
-
-
-
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Release date::</label>
+                                <label for="exampleInputPassword1">Movie Release date:</label>
                                 <input value="{{old('release')}}" type="date" name="release" class="form-control" id="">
                             </div>
                             @error("release")

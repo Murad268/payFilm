@@ -35,7 +35,7 @@
                             @enderror
                             @endforeach
                             <div class="form-check">
-                                <input name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <input value="1" {{old('status', $category->status) == 1?'checked':""}} name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">kategoriyanın statusu</label>
                             </div>
                             @error('status')
