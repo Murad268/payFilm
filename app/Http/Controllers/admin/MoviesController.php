@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\movies\CreateMovieRequest;
+use App\Http\Requests\movies\UpdateMovieRequest;
 use App\Models\Actors;
 use App\Models\Categories;
 use App\Models\Countries;
@@ -30,7 +31,7 @@ class MoviesController extends Controller
     {
         $categories = Categories::all();
         $homeCategories = HomeCategories::all();
-        return view('admin.movies.create', compact('homeCategories', 'categories',));
+        return view('admin.movies.create', compact('homeCategories', 'categories'));
     }
 
     public function store(CreateMovieRequest $request)
@@ -40,6 +41,19 @@ class MoviesController extends Controller
     }
 
 
+    public function edit($id)
+    {
+        $categories = Categories::all();
+        $homeCategories = HomeCategories::all();
+        $movie = Movies::findOrFail($id);
+        return view('admin.movies.edit', compact('homeCategories', 'categories', 'movie'));
+    }
+
+    public function update(UpdateMovieRequest $request, $id)
+    {
+        $this->movieService->update($request, $id);
+        return redirect()->route('admin.movies.index')->with("message", "the information has been updated to the database");
+    }
     public function destroy($id)
     {
         $this->movieService->delete($id);

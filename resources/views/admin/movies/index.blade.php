@@ -58,7 +58,7 @@
                                         <td> <a target="_blank" href="{{asset('assets/front/images/'.$movie->banner)}}"><img style="width: 90px; height: 50px" src="{{asset('assets/front/images/'.$movie->banner)}}" alt=""></a>
                                         </td>
                                         <td>{{ $movie->length}}</td>
-                                        <td>{{ $movie->getTranslation('link', app()->getLocale()) }}</td>
+                                        <td>{{ $movie->link }}</td>
                                         <td>{{$movie->ytrailer}}</td>
                                         <td>{{$movie->quality}}</td>
                                         <td>{{ $movie->getTranslation('actors', app()->getLocale()) }}</td>

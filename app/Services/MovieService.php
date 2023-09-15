@@ -29,19 +29,12 @@ class MovieService
 
         try {
             $portfolio = Movies::findOrFail($id);
-            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'portfolio_item_img', $portfolio->portfolio_item_img);
-            $result1 = $this->imageService->updateImage($request, 'assets/front/images/', 'banner_img', $portfolio->banner_img);
+            $result = $this->imageService->updateImage($request, 'assets/front/images/', 'poster', $portfolio->poster);
+            $result1 = $this->imageService->updateImage($request, 'assets/front/images/', 'banner', $portfolio->banner);
             $data = $request->all();
-            $data['portfolio_item_img'] = $result;
-            $data['banner_img'] = $result1;
-
-
-
-
-
-
-            unset($data['portfolio__item__category_id']);
-            $this->dataServices->save($portfolio, $data, 'update', 'services', $request->portfolio__item__category_id);
+            $data['poster'] = $result;
+            $data['banner'] = $result1;
+            $this->dataServices->save($portfolio, $data, 'update');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -53,7 +46,7 @@ class MovieService
     {
         try {
             $portfolio = Movies::findOrFail($id);
-      
+            $portfolio->delete();
             $this->imageService->deleteImage('assets/front/images/', $portfolio->banner);
             $this->imageService->deleteImage('assets/front/images/', $portfolio->poster);
         } catch (Exception $e) {

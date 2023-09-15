@@ -10,7 +10,7 @@ class Movies extends Model
 {
     use HasFactory;
     use HasTranslations;
-    public $translatable = ['name', 'slug', "link", "actors", "directors", "scriptwriters", "desc", "countries"];
+    public $translatable = ['name', 'slug', "actors", "directors", "scriptwriters", "desc", "countries"];
     protected $guarded = [];
 
     public function movie_categories()
