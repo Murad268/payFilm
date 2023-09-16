@@ -28,7 +28,8 @@ class SeasonsController extends Controller
         try {
             Seasons::create([
                 'serie_id' => (int)$id,
-                'season_name' => $request->season_name
+                'season_name' => $request->season_name,
+                "slug" => $request->slug
             ]);
             return redirect()->route('admin.seasons.index', $id)->with("message", "the information was added to the database");;
         } catch (Exception $e) {
@@ -36,8 +37,27 @@ class SeasonsController extends Controller
         }
     }
 
+    public function edit($id)
+    {
 
+        $season = Seasons::findOrFail($id);
+        return view('admin.seasons.edit', compact('season'));
+    }
 
+    public function update(SeasonsRequest $request, $id)
+    {
+        try {
+            $season = Seasons::findOrFail($id);
+            $season->update([
+                'serie_id' => (int)$id,
+                'season_name' => $request->season_name,
+                "slug" => $request->slug
+            ]);
+            return redirect()->route('admin.seasons.index', $id)->with("message", "the information has been updated");;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
     public function destroy($id)
     {
         try {

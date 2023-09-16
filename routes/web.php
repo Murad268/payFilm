@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\MoviesController;
 use App\Http\Controllers\admin\ScriptwriterController;
 use App\Http\Controllers\admin\SeasonsController;
 use App\Http\Controllers\admin\SeriesController;
+use App\Http\Controllers\admin\SeriesEpisodesController;
 use App\Http\Controllers\admin\SettingsController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,5 +44,9 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::get('/series/seasons/create/new_season/{id}', [SeasonsController::class, 'create'])->name('seasons.create.new');
     Route::post('/series/seasons/store/{id}', [SeasonsController::class, 'store'])->name('seasons.create.store');
     Route::post('/series/seasons/destroy/{id}', [SeasonsController::class, 'destroy'])->name('seasons.destroy');
+    Route::get('/series/seasons/edit/{id}', [SeasonsController::class, 'edit'])->name('seasons.edit');
+    Route::post('/series/seasons/update/{id}', [SeasonsController::class, 'update'])->name('seasons.update');
 
+
+    Route::get('/series/seasons/episodes/{id}/{serie_id}', [SeriesEpisodesController::class, 'index'])->name('seasons.episodes.index');
 });

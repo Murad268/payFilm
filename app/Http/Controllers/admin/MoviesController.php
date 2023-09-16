@@ -52,7 +52,7 @@ class MoviesController extends Controller
     public function update(UpdateMovieRequest $request, $id)
     {
         $this->movieService->update($request, $id);
-        return redirect()->route('admin.movies.index')->with("message", "the information has been updated to the database");
+        return redirect()->route('admin.movies.index')->with("message", "the information has been updated");
     }
     public function destroy($id)
     {

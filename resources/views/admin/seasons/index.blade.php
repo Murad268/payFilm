@@ -26,7 +26,7 @@
                                         <th>id</th>
                                         <th>Season Name</th>
                                         <th>Season Slug</th>
-                                        <th>Season Count</th>
+                                        <th>Season Episodes</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
@@ -37,7 +37,12 @@
                                         <td>{{ $season->getTranslation('season_name', app()->getLocale()) }}</td>
                                         <td>{{ $season->getTranslation('slug', app()->getLocale()) }}</td>
                                         <td>
-                                            <a href="{{route('admin.seasons.destroy', $season->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
+                                        <td>
+                                            <a href="{{route('admin.seasons.episodes.index', ['id' => $season->id,'serie_id' => $serie_id])}}" style="width: max-content" class="mt-2 btn btn-primary">see episodes</a>
+                                        </td>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.seasons.edit', $season->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
                                             <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.seasons.destroy', $season->id)}}">
                                                 @csrf
                                                 <input class="btn btn-danger" value="delete" type="submit">
