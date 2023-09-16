@@ -20,12 +20,14 @@ class SeasonsController extends Controller
     public function create($id)
     {
         $serie_id = $id;
+
         return view('admin.seasons.create', compact('serie_id'));
     }
 
     public function store(SeasonsRequest $request, $id)
     {
         try {
+
             Seasons::create([
                 'serie_id' => (int)$id,
                 'season_name' => $request->season_name,
@@ -39,7 +41,6 @@ class SeasonsController extends Controller
 
     public function edit($id)
     {
-
         $season = Seasons::findOrFail($id);
         return view('admin.seasons.edit', compact('season'));
     }
@@ -48,12 +49,12 @@ class SeasonsController extends Controller
     {
         try {
             $season = Seasons::findOrFail($id);
+
             $season->update([
-                'serie_id' => (int)$id,
                 'season_name' => $request->season_name,
                 "slug" => $request->slug
             ]);
-            return redirect()->route('admin.seasons.index', $id)->with("message", "the information has been updated");;
+            return redirect()->route('admin.seasons.index', $season->serie_id)->with("message", "the information has been updated");;
         } catch (Exception $e) {
             echo $e->getMessage();
         }

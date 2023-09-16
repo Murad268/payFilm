@@ -23,8 +23,10 @@
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>Season Name</th>
-                                        <th>Season Slug</th>
+                                        <th>Episode Name</th>
+                                        <th>Episode Order</th>
+                                        <th>Episode Slug</th>
+                                        <th>Episode Link</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
@@ -33,11 +35,13 @@
                                     <tr>
                                         <td>{{ $episode->id }}</td>
                                         <td>{{ $episode->getTranslation('episode_name', app()->getLocale()) }}</td>
+                                        <th>{{$episode->episode_order}}</th>
                                         <td>{{ $episode->getTranslation('slug', app()->getLocale()) }}</td>
                                         <td>
+                                            {{$episode->link}}
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.seasons.episodes.edit', ['id' => $id,'serie_id' => $serie_id])}}" class="btn btn-warning text-light">Epizodu dəyiş</a>
+                                            <a href="{{route('admin.seasons.episodes.edit', ['id' => $episode->id,'serie_id' => $serie_id])}}" class="btn btn-warning text-light">Epizodu dəyiş</a>
                                             <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="">
                                                 @csrf
                                                 <input class="btn btn-danger" value="delete" type="submit">

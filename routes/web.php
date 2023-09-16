@@ -40,6 +40,9 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/countries', CountriesController::class);
     Route::resource('/movies', MoviesController::class);
     Route::resource('/series', SeriesController::class);
+
+
+
     Route::get('/series/seasons/{id}', [SeasonsController::class, 'index'])->name('seasons.index');
     Route::get('/series/seasons/create/new_season/{id}', [SeasonsController::class, 'create'])->name('seasons.create.new');
     Route::post('/series/seasons/store/{id}', [SeasonsController::class, 'store'])->name('seasons.create.store');
@@ -48,7 +51,9 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::post('/series/seasons/update/{id}', [SeasonsController::class, 'update'])->name('seasons.update');
 
 
-    Route::get('/series/seasons/episodes/{id}/{serie_id}', [SeriesEpisodesController::class, 'index'])->name('seasons.episodes.index');
+    Route::get('/series/seasons/episodes/{id}', [SeriesEpisodesController::class, 'index'])->name('seasons.episodes.index');
+
+
     Route::get('/series/seasons/episodes/create/{id}/{serie_id}', [SeriesEpisodesController::class, 'create'])->name('seasons.episodes.create');
     Route::post('/series/seasons/episodes/create/{id}/{serie_id}', [SeriesEpisodesController::class, 'store'])->name('seasons.episodes.store');
     Route::get('/series/seasons/episodes/edit/{id}/{serie_id}', [SeriesEpisodesController::class, 'edit'])->name('seasons.episodes.edit');
