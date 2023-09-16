@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\ActorsController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\AdminProccessController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\CountriesController;
 use App\Http\Controllers\admin\DirectorsController;
@@ -40,6 +41,8 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/countries', CountriesController::class);
     Route::resource('/movies', MoviesController::class);
     Route::resource('/series', SeriesController::class);
+    Route::resource('/admins', AdminProccessController::class);
+
 
 
 
@@ -54,5 +57,7 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::post('/series/seasons/episodes/create/{id}/{serie_id}', [SeriesEpisodesController::class, 'store'])->name('seasons.episodes.store');
     Route::get('/series/seasons/episodes/edit/{id}/{serie_id}', [SeriesEpisodesController::class, 'edit'])->name('seasons.episodes.edit');
     Route::post('/series/seasons/episodes/update/{id}/{serie_id}', [SeriesEpisodesController::class, 'update'])->name('seasons.episodes.update');
+
+
 
 });
