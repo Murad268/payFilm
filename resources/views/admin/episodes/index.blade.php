@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="" class="btn btn-primary">yeni epizod əlavə et</a>
+                                <a href="{{route('admin.seasons.episodes.create', ['id' => $id,'serie_id' => $serie_id])}}" class="btn btn-primary">yeni epizod əlavə et</a>
                             </h3>
                         </div>
                         <div class="card-body">

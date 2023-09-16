@@ -49,4 +49,6 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
 
 
     Route::get('/series/seasons/episodes/{id}/{serie_id}', [SeriesEpisodesController::class, 'index'])->name('seasons.episodes.index');
+    Route::get('/series/seasons/episodes/create/{id}/{serie_id}', [SeriesEpisodesController::class, 'create'])->name('seasons.episodes.create');
+
 });
