@@ -5,13 +5,14 @@
     .card-body {
         overflow-x: scroll;
     }
-
+    #example2 {
+        width: max-content;
+    }
     td,
     th,
     tr {
         width: max-content;
     }
-
 </style>
 <div class="">
     <section class="content mt-3">

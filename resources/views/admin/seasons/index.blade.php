@@ -1,7 +1,11 @@
 @extends('admin.back')
 @section('page_title', 'seasons')
 @section('content')
-
+<style>
+    #example2 {
+        width: max-content;
+    }
+</style>
 <div class="">
     <section class="content mt-3">
         <div class="container-fluid">
