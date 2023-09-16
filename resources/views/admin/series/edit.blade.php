@@ -1,5 +1,5 @@
 @extends('admin.back')
-@section('page_title', 'movie edit')
+@section('page_title', 'serie edit')
 @section('content')
 <div class="">
     <section class="content">

@@ -53,7 +53,6 @@
                                         </td>
                                     </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                             <div style="margin: 0 auto; width: max-content" class="pagination mt-2">

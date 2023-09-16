@@ -11,6 +11,6 @@ class Seasons extends Model
     use HasFactory;
     use HasTranslations;
     public $table = "seasons";
-    public $translatable = ['season_name'];
+    public $translatable = ['season_name', 'slug'];
     protected $guarded = [];
 }

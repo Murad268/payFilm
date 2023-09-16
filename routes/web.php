@@ -39,7 +39,9 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/countries', CountriesController::class);
     Route::resource('/movies', MoviesController::class);
     Route::resource('/series', SeriesController::class);
+    Route::get('/series/seasons/{id}', [SeasonsController::class, 'index'])->name('seasons.index');
+    Route::get('/series/seasons/create/new_season/{id}', [SeasonsController::class, 'create'])->name('seasons.create.new');
+    Route::post('/series/seasons/store/{id}', [SeasonsController::class, 'store'])->name('seasons.create.store');
+    Route::post('/series/seasons/destroy/{id}', [SeasonsController::class, 'destroy'])->name('seasons.destroy');
+
 });
-
-
-Route::get('/admin/series/seasons/{id}', [SeasonsController::class, 'index'])->name('admin.seasons.index');

@@ -1,5 +1,5 @@
 @extends('admin.back')
-@section('page_title', 'directors')
+@section('page_title', 'series')
 @section('content')
 <style>
     .card-body {

@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="{{route('admin.categories.create')}}" class="btn btn-primary">yeni sezon əlavə et</a>
+                                <a href="{{route('admin.seasons.create.new', $serie_id)}}" class="btn btn-primary">yeni sezon əlavə et</a>
                             </h3>
                         </div>
                         <div class="card-body">
@@ -20,22 +20,33 @@
                                 {{ session('message') }}
                             </div>
                             @endif
-
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>Category Name</th>
-                                        <th>Category Slug</th>
-                                        <th>Category Status</th>
+                                        <th>Season Name</th>
+                                        <th>Season Slug</th>
+                                        <th>Season Count</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    @foreach($seasons as $season)
+                                    <tr>
+                                        <td>{{ $season->id }}</td>
+                                        <td>{{ $season->getTranslation('season_name', app()->getLocale()) }}</td>
+                                        <td>{{ $season->getTranslation('slug', app()->getLocale()) }}</td>
+                                        <td>
+                                            <a href="{{route('admin.seasons.destroy', $season->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
+                                            <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.seasons.destroy', $season->id)}}">
+                                                @csrf
+                                                <input class="btn btn-danger" value="delete" type="submit">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-
                             <div style="margin: 0 auto; width: max-content" class="pagination mt-2">
                                 {{ $seasons->links() }}
                             </div>
