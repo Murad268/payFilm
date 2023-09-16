@@ -29,6 +29,7 @@ class EpisodeRequest extends FormRequest
             $rules["slug.$lang"] = 'required|string|max:255|regex:/^[a-zA-Z0-9\-_]+$/';
             $rules["length"] = 'required|numeric';
             $rules["link"] = 'required';
+            $rules['release'] = 'required';
         }
 
 
@@ -55,6 +56,7 @@ class EpisodeRequest extends FormRequest
             $customMessages["length.required"] = __("The length field is required in $lang");
             $customMessages["length.numeric"] = __("The length must be a numeric value in $lang");
             $customMessages["link.required"] = __("The link field is required in $lang");
+            $customMessages["release.required"] = "The release field is required.";
         }
         return $customMessages;
     }

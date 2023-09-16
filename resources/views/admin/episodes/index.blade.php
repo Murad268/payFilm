@@ -1,6 +1,21 @@
 @extends('admin.back')
 @section('page_title', 'seasons')
 @section('content')
+<style>
+    .card-body {
+        overflow-x: scroll;
+    }
+
+    #example2 {
+        width: max-content;
+    }
+
+    td,
+    th,
+    tr {
+        width: max-content;
+    }
+</style>
 <div class="">
     <section class="content mt-3">
         <div class="container-fluid">
@@ -29,6 +44,7 @@
                                         <th>Epizodun Linki</th>
                                         <th>Epizodun Keyfiyyəti</th>
                                         <th>Epizodun Müddəti</th>
+                                        <th>Epizodun Çıxış Tarixi</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
@@ -47,6 +63,9 @@
                                         </td>
                                         <td>
                                             {{$episode->length}}
+                                        </td>
+                                        <td>
+                                            {{$episode->release}}
                                         </td>
                                         <td>
                                             <a href="{{route('admin.seasons.episodes.edit', ['id' => $episode->id,'serie_id' => $serie_id])}}" class="btn btn-warning text-light">Epizodu dəyiş</a>
