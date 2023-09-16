@@ -41,15 +41,13 @@
                                         <td>{{ $season->getTranslation('season_name', app()->getLocale()) }}</td>
                                         <td>{{ $season->getTranslation('slug', app()->getLocale()) }}</td>
                                         <td>
-                                        <td>
-                                            <a href="{{route('admin.seasons.episodes.index', ['id' => $season->id,'serie_id' => $serie_id])}}" style="width: max-content" class="mt-2 btn btn-primary">see episodes</a>
-                                        </td>
+                                            <a href="{{route('admin.seasons.episodes.index', ['id' => $season->id,'serie_id' => $serie_id])}}" style="width: max-content" class="mt-2 btn btn-primary">epizodları gör</a>
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.seasons.edit', $season->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
-                                            <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.seasons.destroy', $season->id)}}">
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.seasons.destroy', $season->id)}}">
+                                                <a href="{{route('admin.seasons.edit', $season->id)}}" class="btn btn-warning text-light">Sezonu dəyiş</a>
                                                 @csrf
-                                                <input class="btn btn-danger" value="delete" type="submit">
+                                                <input class="btn btn-danger" value="sil" type="submit">
                                             </form>
                                         </td>
                                     </tr>

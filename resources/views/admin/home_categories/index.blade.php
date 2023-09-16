@@ -38,17 +38,17 @@
                                         <td>{{ $category->getTranslation('cat_name', app()->getLocale()) }}</td>
                                         <td>{{ $category->getTranslation('slug', app()->getLocale()) }}</td>
                                         <td> @if($category->status)
-                                            <div class="btn btn-primary swalDefaultError">active</div>
+                                            <div class="btn btn-primary swalDefaultError">activ</div>
                                             @else
-                                            <div class="btn btn-danger swalDefaultError">passive</div>
+                                            <div class="btn btn-danger swalDefaultError">passiv</div>
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.home-categories.edit', $category->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
-                                            <form onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.home-categories.destroy', $category->id)}}">
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.home-categories.destroy', $category->id)}}">
+                                                <a href="{{route('admin.home-categories.edit', $category->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
                                                 @csrf
                                                 @method("delete")
-                                                <input class="btn btn-danger" value="delete" type="submit">
+                                                <input class="btn btn-danger" value="sil" type="submit">
                                             </form>
                                         </td>
                                     </tr>

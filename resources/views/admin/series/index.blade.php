@@ -42,8 +42,6 @@
                                         <th>Serial Slug</th>
                                         <th>Serialın Posteri</th>
                                         <th>Serialın Banneri</th>
-                                        <th>Serial Epizodunun ortalama müddəti</th>
-                                        <th>Serialın Linki</th>
                                         <th>Serialın Youtube Traileri</th>
                                         <th>Serialın Aktyorları</th>
                                         <th>Serialın Ssenarstləri</th>
@@ -68,8 +66,6 @@
                                         </td>
                                         <td> <a target="_blank" href="{{asset('assets/front/images/'.$serie->banner)}}"><img style="width: 90px; height: 50px" src="{{asset('assets/front/images/'.$serie->banner)}}" alt=""></a>
                                         </td>
-                                        <td>{{ $serie->length}}</td>
-                                        <td>{{ $serie->link }}</td>
                                         <td>{{$serie->ytrailer}}</td>
                                         <td>{{ $serie->getTranslation('actors', app()->getLocale()) }}</td>
                                         <td>{{ $serie->getTranslation('scriptwriters', app()->getLocale()) }}</td>
@@ -79,23 +75,23 @@
                                         <td>{{ $serie->movie_home_categories->cat_name }}</td>
                                         <td>{{$serie->release}}</td>
                                         <td>{!! $serie->getTranslation('desc', app()->getLocale()) !!}</td>
-                                        <td>
-                                            <div>{{$serie->serie_seasons()->count()}}</div>
-                                            <a href="{{route('admin.seasons.index', $serie->id)}}" style="width: max-content" class="mt-2 btn btn-primary">see seasons</a>
+                                        <td style="display: flex; align-items: center; column-gap: 5px">
+                                            <div style="font-size: 20px;" class="text-primary">{{$serie->serie_seasons()->count()}}</div>
+                                            <a href="{{route('admin.seasons.index', $serie->id)}}" style="width: max-content" class="mt-2 btn btn-primary">sezonları gör</a>
                                         </td>
                                         <td>
                                             @if($serie->status)
-                                            <div class="btn btn-primary swalDefaultError">active</div>
+                                            <div class="btn btn-primary swalDefaultError">activ</div>
                                             @else
-                                            <div class="btn btn-danger swalDefaultError">passive</div>
+                                            <div class="btn btn-danger swalDefaultError">passiv</div>
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.series.edit', $serie->id)}}" class="btn btn-warning text-light">Serialı dəyiş</a>
-                                            <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.series.destroy', $serie->id)}}">
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.series.destroy', $serie->id)}}">
+                                                <a href="{{route('admin.series.edit', $serie->id)}}" class="btn btn-warning text-light">Serialı dəyiş</a>
                                                 @csrf
                                                 @method("delete")
-                                                <input class="btn btn-danger" value="delete" type="submit">
+                                                <input class="btn btn-danger" value="sil" type="submit">
                                             </form>
                                         </td>
                                     </tr>

@@ -68,8 +68,8 @@
                                             {{$episode->release}}
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.seasons.episodes.edit', ['id' => $episode->id,'serie_id' => $serie_id])}}" class="btn btn-warning text-light">Epizodu dəyiş</a>
-                                            <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="">
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="">
+                                                <a href="{{route('admin.seasons.episodes.edit', ['id' => $episode->id,'serie_id' => $serie_id])}}" class="btn btn-warning text-light">Epizodu dəyiş</a>
                                                 @csrf
                                                 <input class="btn btn-danger" value="delete" type="submit">
                                             </form>

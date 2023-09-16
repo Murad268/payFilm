@@ -52,7 +52,7 @@
                                         <th>Filmin Rejissoru(ları)</th>
                                         <th>Filmin Ölkəsi(ləri)</th>
                                         <th>Filmin Keteqoriyası</th>
-                                     
+
                                         <th>Filmin Ana Səhifə Keteqoriyası</th>
                                         <th>Filmin Çıxış Tarixi</th>
                                         <th>Filmin Açıqlaması</th>
@@ -84,17 +84,17 @@
                                         <td>{!! $movie->getTranslation('desc', app()->getLocale()) !!}</td>
                                         <td>
                                             @if($movie->status)
-                                            <div class="btn btn-primary swalDefaultError">active</div>
+                                            <div class="btn btn-primary swalDefaultError">activ</div>
                                             @else
-                                            <div class="btn btn-danger swalDefaultError">passive</div>
+                                            <div class="btn btn-danger swalDefaultError">passiv</div>
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.movies.edit', $movie->id)}}" class="btn btn-warning text-light">Filmi dəyiş</a>
-                                            <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.movies.destroy', $movie->id)}}">
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.movies.destroy', $movie->id)}}">
+                                                <a href="{{route('admin.movies.edit', $movie->id)}}" class="btn btn-warning text-light">Filmi dəyiş</a>
                                                 @csrf
                                                 @method("delete")
-                                                <input class="btn btn-danger" value="delete" type="submit">
+                                                <input class="btn btn-danger" value="sil" type="submit">
                                             </form>
                                         </td>
                                     </tr>
