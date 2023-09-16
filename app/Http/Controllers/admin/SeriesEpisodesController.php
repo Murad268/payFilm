@@ -34,7 +34,9 @@ class SeriesEpisodesController extends Controller
                 "season_id" => $request->id,
                 'episode_name' => $request->episode_name,
                 'slug' => $request->slug,
-                'link' => $request->link
+                'link' => $request->link,
+                'quality' => $request->quality,
+                'length' => $request->length,
             ]);
             return redirect()->route('admin.seasons.episodes.index', ['id' => $id, 'serie_id' => $serie_id])->with("message", "the information was added to the database");;
         } catch (Exception $e) {
@@ -59,7 +61,9 @@ class SeriesEpisodesController extends Controller
                 'episode_order' => (int)$request->episode_order,
                 'episode_name' => $request->episode_name,
                 'slug' => $request->slug,
-                'link' => $request->link
+                'link' => $request->link,
+                'quality' => $request->quality,
+                'length' => $request->length,
             ]);
             return redirect()->route('admin.seasons.episodes.index', ['id' => $episode->season_id, 'serie_id' => $episode->serie_id])->with("message", "the information has been updated");;
         } catch (Exception $e) {

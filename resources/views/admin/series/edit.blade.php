@@ -12,8 +12,8 @@
                         <div class="card-body">
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Film adı {{$lang}} dilində</label>
-                                <input name="name[{{ $lang }}]" value="{{ old('name.' . $lang, $serie->getTranslation('name', $lang)) }}" type="text" class="form-control" placeholder="Filmin adını daxil edin">
+                                <label for="exampleInputPassword1">Serialın adı {{$lang}} dilində</label>
+                                <input name="name[{{ $lang }}]" value="{{ old('name.' . $lang, $serie->getTranslation('name', $lang)) }}" type="text" class="form-control" placeholder="Serialın adını daxil edin">
                             </div>
                             @error("name.$lang")
                             <div class="alert alert-danger mt-2" role="alert">
@@ -72,8 +72,8 @@
 
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Film slug {{$lang}} dilində</label>
-                                <input name="slug[{{ $lang }}]" value="{{ old('slug.' . $lang, $serie->getTranslation('slug', $lang)) }}" type="text" class="form-control" placeholder="Filmin adını daxil edin">
+                                <label for="exampleInputPassword1">Serial slug {{$lang}} dilində</label>
+                                <input name="slug[{{ $lang }}]" value="{{ old('slug.' . $lang, $serie->getTranslation('slug', $lang)) }}" type="text" class="form-control" placeholder="Serialın adını daxil edin">
                             </div>
                             @error("slug.$lang")
                             <div class="alert alert-danger mt-2" role="alert">
@@ -83,7 +83,7 @@
                             @endforeach
 
                             <div class="form-group">
-                                <label for="exampleInputFile">Movie Poster</label>
+                                <label for="exampleInputFile">Serialın Posteri</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input name="poster" type="file" class="custom-file-input" id="exampleInputFile">
@@ -100,7 +100,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputFile">Movie Banner</label>
+                                <label for="exampleInputFile">Serialın Banneri</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input name="banner" type="file" class="custom-file-input" id="exampleInputFile">
@@ -116,37 +116,20 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Movie length (min):</label>
-                                <input name="length" value="{{ old('length', $serie->length) }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
-                            </div>
-                            @error("length")
-                            <div class="alert alert-danger mt-2" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Link:</label>
-                                <input name="link" value="{{ old('link', $serie->link) }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
-                            </div>
-                            @error("link")
-                            <div class="alert alert-danger mt-2" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
+
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Youtube Trailer Link:</label>
-                                <input name="ytrailer" value="{{ old('ytrailer', $serie->ytrailer) }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
+                                <label for="exampleInputPassword1">Serialın Youtube Trailer Linki:</label>
+                                <input name="ytrailer" value="{{ old('ytrailer', $serie->ytrailer) }}" type="text" class="form-control" placeholder="Serialın uzunluğunu daxil edin">
                             </div>
                             @error("ytrailer")
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
-                          
+
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie category:</label>
+                                <label for="exampleInputPassword1">Serialın kateqoriyası:</label>
                                 <select name="movie_category_id" id="" class="form-control category-movie">
                                     @foreach($categories as $category)
                                     <option {{old('movie_category_id') == $category->id?'selected':""}} value="{{$category->id}}">{{$category->name}}</option>
@@ -159,7 +142,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie home category:</label>
+                                <label for="exampleInputPassword1">Serialın ana səhifə kateqoriyası:</label>
                                 <select name="movie_home_category_id" id="" class="form-control">
                                     @foreach($homeCategories as $homeCategory)
                                     <option {{old('movie_home_category_id', $homeCategory->id) == $homeCategory->id?'selected':""}} value="{{$homeCategory->id}}">{{$homeCategory->cat_name}}</option>
@@ -172,7 +155,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Release date:</label>
+                                <label for="exampleInputPassword1">Serialın Çıxış tarixi:</label>
                                 <input value="{{old('release', $serie->release)}}" type="date" name="release" class="form-control" id="">
                             </div>
                             @error("release")
@@ -182,7 +165,7 @@
                             @enderror
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie description {{$lang}} dilində:</label>
+                                <label for="exampleInputPassword1">Serialın açıqlaması {{$lang}} dilində:</label>
                                 <textarea name="desc[{{ $lang }}]" style="height: 500px;" id="editor">{{ old('desc.' . $lang, $serie->getTranslation('desc', app()->getLocale()) ) }}</textarea>
                             </div>
                             @endforeach

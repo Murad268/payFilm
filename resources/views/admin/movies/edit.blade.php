@@ -89,7 +89,7 @@
                             @endforeach
 
                             <div class="form-group">
-                                <label for="exampleInputFile">Movie Poster</label>
+                                <label for="exampleInputFile">Filmin Posteri</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input name="poster" type="file" class="custom-file-input" id="exampleInputFile">
@@ -106,7 +106,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputFile">Movie Banner</label>
+                                <label for="exampleInputFile">Filmin Banneri</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input name="banner" type="file" class="custom-file-input" id="exampleInputFile">
@@ -123,7 +123,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie length (min):</label>
+                                <label for="exampleInputPassword1">Filmin müddəti (min):</label>
                                 <input name="length" value="{{ old('length', $movie->length) }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
                             </div>
                             @error("length")
@@ -132,7 +132,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Link:</label>
+                                <label for="exampleInputPassword1">Filmin Linki:</label>
                                 <input name="link" value="{{ old('link', $movie->link) }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
                             </div>
                             @error("link")
@@ -142,7 +142,7 @@
                             @enderror
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Youtube Trailer Link:</label>
+                                <label for="exampleInputPassword1">Filmin Youtube Trailer Linki:</label>
                                 <input name="ytrailer" value="{{ old('ytrailer', $movie->ytrailer) }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
                             </div>
                             @error("ytrailer")
@@ -151,7 +151,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie quality:</label>
+                                <label for="exampleInputPassword1">Filmin keyfiyyəti:</label>
                                 <select name="quality" id="quality" class="form-control">
                                     <option value="HD" {{ old('quality', $movie->quality) === 'HD' ? 'selected' : '' }}>HD</option>
                                     <option value="HD" {{ old('quality', $movie->quality) === '4k' ? 'selected' : '' }}>4k</option>
@@ -163,7 +163,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie category:</label>
+                                <label for="exampleInputPassword1">Filmin kateqoriyası:</label>
                                 <select name="movie_category_id" id="" class="form-control category-movie">
                                     @foreach($categories as $category)
                                     <option {{old('movie_category_id') == $category->id?'selected':""}} value="{{$category->id}}">{{$category->name}}</option>
@@ -176,7 +176,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie home category:</label>
+                                <label for="exampleInputPassword1">Filmin ana səhifə kateqoriyası:</label>
                                 <select name="movie_home_category_id" id="" class="form-control">
                                     @foreach($homeCategories as $homeCategory)
                                     <option {{old('movie_home_category_id', $homeCategory->id) == $homeCategory->id?'selected':""}} value="{{$homeCategory->id}}">{{$homeCategory->cat_name}}</option>
@@ -193,7 +193,7 @@
 
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Release date:</label>
+                                <label for="exampleInputPassword1">Filmin Çıxış tarixi:</label>
                                 <input value="{{old('release', $movie->release)}}" type="date" name="release" class="form-control" id="">
                             </div>
                             @error("release")
@@ -204,7 +204,7 @@
 
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie description {{$lang}} dilində:</label>
+                                <label for="exampleInputPassword1">Filmin açıqlaması {{$lang}} dilində:</label>
                                 <textarea name="desc[{{ $lang }}]" style="height: 500px;" id="editor">{{ old('desc.' . $lang, $movie->getTranslation('desc', app()->getLocale()) ) }}</textarea>
                             </div>
                             @endforeach
@@ -216,7 +216,7 @@
                             @enderror
                             <div class="form-check">
                                 <input  {{old('status', $movie->status) == 1?'checked':""}} value="1" name='status' type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">film statusu</label>
+                                <label class="form-check-label" for="exampleCheck1">filmin statusu</label>
                             </div>
                             @error('status')
                             <div class="alert alert-danger mt-2" role="alert">

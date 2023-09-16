@@ -23,10 +23,12 @@
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>Episode Name</th>
-                                        <th>Episode Order</th>
-                                        <th>Episode Slug</th>
-                                        <th>Episode Link</th>
+                                        <th>Epizodun Adı</th>
+                                        <th>Epizodun Order</th>
+                                        <th>Epizodun Slugu</th>
+                                        <th>Epizodun Linki</th>
+                                        <th>Epizodun Keyfiyyəti</th>
+                                        <th>Epizodun Müddəti</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
@@ -39,6 +41,12 @@
                                         <td>{{ $episode->getTranslation('slug', app()->getLocale()) }}</td>
                                         <td>
                                             {{$episode->link}}
+                                        </td>
+                                        <td>
+                                            {{$episode->quality}}
+                                        </td>
+                                        <td>
+                                            {{$episode->length}}
                                         </td>
                                         <td>
                                             <a href="{{route('admin.seasons.episodes.edit', ['id' => $episode->id,'serie_id' => $serie_id])}}" class="btn btn-warning text-light">Epizodu dəyiş</a>

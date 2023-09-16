@@ -27,6 +27,8 @@ class EpisodeRequest extends FormRequest
             $rules['episode_order'] = 'integer';
             $rules["episode_name.$lang"] = 'required|string|max:255';
             $rules["slug.$lang"] = 'required|string|max:255|regex:/^[a-zA-Z0-9\-_]+$/';
+            $rules["length"] = 'required|numeric';
+            $rules["link"] = 'required';
         }
 
 
@@ -50,9 +52,10 @@ class EpisodeRequest extends FormRequest
             $customMessages["slug.$lang.string"] = __("The slug must be a string in $lang");
             $customMessages["slug.$lang.max"] = __("The slug may not be greater than 255 characters in $lang");
             $customMessages["slug.$lang.regex"] = __("The slug format is invalid in $lang");
+            $customMessages["length.required"] = __("The length field is required in $lang");
+            $customMessages["length.numeric"] = __("The length must be a numeric value in $lang");
+            $customMessages["link.required"] = __("The link field is required in $lang");
         }
-
         return $customMessages;
     }
-
 }

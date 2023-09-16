@@ -4,7 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\movies\CreateMovieRequest;
+use App\Http\Requests\series\SeriesRequest;
 use App\Http\Requests\movies\UpdateMovieRequest;
+use App\Http\Requests\series\SeriesRequestUpdate;
 use App\Models\Categories;
 use App\Models\HomeCategories;
 use App\Models\Series;
@@ -29,7 +31,7 @@ class SeriesController extends Controller
         return view('admin.series.create', compact('homeCategories', 'categories'));
     }
 
-    public function store(CreateMovieRequest $request)
+    public function store(SeriesRequest $request)
     {
         $this->seriesService->create($request);
         return redirect()->route('admin.series.index')->with("message", "the information was added to the database");
@@ -44,7 +46,7 @@ class SeriesController extends Controller
         return view('admin.series.edit', compact('homeCategories', 'categories', 'serie'));
     }
 
-    public function update(UpdateMovieRequest $request, $id)
+    public function update(SeriesRequestUpdate $request, $id)
     {
         $this->seriesService->update($request, $id);
         return redirect()->route('admin.series.index')->with("message", "the information has been updated to the database");

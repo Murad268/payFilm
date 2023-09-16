@@ -81,7 +81,7 @@
                             @endforeach
 
                             <div class="form-group">
-                                <label for="exampleInputFile">Movie Poster</label>
+                                <label for="exampleInputFile">Filmin Posteri</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input name="poster" type="file" class="custom-file-input" id="exampleInputFile">
@@ -98,7 +98,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputFile">Movie Banner</label>
+                                <label for="exampleInputFile">Filmin Banneri</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input name="banner" type="file" class="custom-file-input" id="exampleInputFile">
@@ -115,7 +115,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie length (min):</label>
+                                <label for="exampleInputPassword1">Filmin müddəti (min):</label>
                                 <input name="length" value="{{ old('length') }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
                             </div>
                             @error("length")
@@ -124,7 +124,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Link:</label>
+                                <label for="exampleInputPassword1">Filmin Linki:</label>
                                 <input name="link" value="{{ old('link') }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
                             </div>
                             @error("link")
@@ -134,7 +134,7 @@
                             @enderror
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Youtube Trailer Link:</label>
+                                <label for="exampleInputPassword1">Filmin Youtube Trailer Linki:</label>
                                 <input name="ytrailer" value="{{ old('ytrailer') }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
                             </div>
                             @error("ytrailer")
@@ -143,7 +143,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie quality:</label>
+                                <label for="exampleInputPassword1">Filmin keyfiyyəti:</label>
                                 <select name="quality" id="" class="form-control">
                                     <option value="HD" {{ old('quality') === 'HD' ? 'selected' : '' }}>HD</option>
                                     <option value="4k" {{ old('quality') === '4k' ? 'selected' : '' }}>4k</option>
@@ -155,7 +155,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie category:</label>
+                                <label for="exampleInputPassword1">Filmin kateqoriyası:</label>
                                 <select name="movie_category_id" id="" class="form-control category-movie">
                                     @foreach($categories as $category)
                                     <option {{old('movie_category_id') == $category->id?'selected':""}} value="{{$category->id}}">{{$category->name}}</option>
@@ -168,7 +168,7 @@
                             </div>
                             @enderror
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie home category:</label>
+                                <label for="exampleInputPassword1">Filmin ana səhifə kateqoriyası:</label>
                                 <select name="movie_home_category_id" id="" class="form-control">
                                     @foreach($homeCategories as $homeCategory)
                                     <option {{old('movie_home_category_id') == $homeCategory->id?'selected':""}} value="{{$homeCategory->id}}">{{$homeCategory->cat_name}}</option>
@@ -182,7 +182,7 @@
                             @enderror
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie Release date:</label>
+                                <label for="exampleInputPassword1">Filmin çıxış tarixi:</label>
                                 <input value="{{old('release')}}" type="date" name="release" class="form-control" id="">
                             </div>
                             @error("release")
@@ -193,7 +193,7 @@
 
                             @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Movie description {{$lang}} dilində:</label>
+                                <label for="exampleInputPassword1">Filmin Açıqlaması {{$lang}} dilində:</label>
                                 <textarea name="desc[{{ $lang }}]" style="height: 500px;" id="editor">{{ old('desc.' . $lang) }}</textarea>
                             </div>
                             @endforeach
@@ -203,7 +203,7 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                       
+
                             @error('status')
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{$message}}
@@ -212,7 +212,7 @@
                         </div>
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Film əlavə et</button>
+                            <button type="submit" class="btn btn-primary">Filmi əlavə et</button>
                         </div>
                     </form>
                 </div>

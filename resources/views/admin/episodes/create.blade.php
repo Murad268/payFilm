@@ -49,6 +49,27 @@
                                 {{ $message }}
                             </div>
                             @enderror
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Epizodun keyfiyyəti:</label>
+                                <select name="quality" id="quality" class="form-control">
+                                    <option value="HD" {{ old('quality') === 'HD' ? 'selected' : '' }}>HD</option>
+                                    <option value="4k" {{ old('quality') === '4k' ? 'selected' : '' }}>4k</option>
+                                </select>
+                            </div>
+                            @error("quality")
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Epizodun müddəti (min):</label>
+                                <input name="length" value="{{ old('length') }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
+                            </div>
+                            @error("length")
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Epizodu əlavə et</button>
