@@ -55,16 +55,13 @@ class SeriesEpisodesController extends Controller
     {
         try {
             $episode = SeriesEpisodes::where('serie_id', $serie_id)->where('id', $id)->first();
-
             $episode->update([
                 'episode_order' => (int)$request->episode_order,
-                'serie_id' => $request->serie_id,
-                "season_id" => $request->id,
                 'episode_name' => $request->episode_name,
                 'slug' => $request->slug,
                 'link' => $request->link
             ]);
-            return redirect()->route('admin.seasons.episodes.index', ['id' => $id])->with("message", "the information has been updated");;
+            return redirect()->route('admin.seasons.episodes.index', ['id' => $episode->season_id, 'serie_id' => $episode->serie_id])->with("message", "the information has been updated");;
         } catch (Exception $e) {
             echo $e->getMessage();
         }
