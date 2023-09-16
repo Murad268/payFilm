@@ -49,17 +49,19 @@
         })
     })
 
+
+
     function deleteConfirmation(event, text = false) {
         event.preventDefault();
 
         Swal.fire({
-            title: text ? 'Are you sure?' + text : 'Are you sure?',
-            text: "This action cannot be undone!",
+            title: text ? 'Əminsiniz?' + text : 'Əminsiniz?',
+            text: "Bu əməliyyat geri qaytarıla bilməz!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!',
+            confirmButtonText: 'Bəli, silin!',
         }).then((result) => {
             if (result.isConfirmed) {
                 event.target.submit();
@@ -71,8 +73,27 @@
         event.preventDefault();
 
         Swal.fire({
-            title: text ? 'Are you sure?' + text : 'Are you sure?',
-            text: "You will exit!",
+            title: text ? 'Əminsiniz?' + text : 'Əminsiniz?',
+            text: "Siz hesabdan çıxacaqsınız!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Bəli, çıxın!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = event.target.getAttribute('href');
+            }
+        });
+    }
+
+
+
+    function toHrefCat(event, text = false) {
+        event.preventDefault();
+        Swal.fire({
+            title: text ? 'Əminsiniz?' + text : 'Əminsiniz?',
+            text: "Bu kateqoriya ilə əlaqəli bütün filmlər və seriallar silinəcəkdir!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -80,11 +101,11 @@
             confirmButtonText: 'Yes, exit!',
         }).then((result) => {
             if (result.isConfirmed) {
-                // Eğer kullanıcı onaylarsa, bağlantıya git
                 window.location.href = event.target.getAttribute('href');
             }
         });
     }
+
 
 
 

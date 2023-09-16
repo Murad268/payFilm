@@ -25,9 +25,9 @@
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>Category Name</th>
-                                        <th>Category Slug</th>
-                                        <th>Category Status</th>
+                                        <th>Katqoriya Adı</th>
+                                        <th>Kategoriya Slug</th>
+                                        <th>Kategoriya Statusu</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
@@ -45,7 +45,7 @@
                                         </td>
                                         <td>
                                             <a href="{{route('admin.home-categories.edit', $category->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
-                                            <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="{{route('admin.home-categories.destroy', $category->id)}}">
+                                            <form onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.home-categories.destroy', $category->id)}}">
                                                 @csrf
                                                 @method("delete")
                                                 <input class="btn btn-danger" value="delete" type="submit">

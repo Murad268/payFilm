@@ -5,9 +5,11 @@
     .card-body {
         overflow-x: scroll;
     }
+
     #example2 {
         width: max-content;
     }
+
     td,
     th,
     tr {
@@ -24,35 +26,37 @@
                             <h3 class="card-title">
                                 <a href="{{route('admin.movies.create')}}" class="btn btn-primary">yeni film əlavə et</a>
                             </h3>
+
+                        </div>
+                        <div class="card-body">
                             @if(session()->has('message'))
                             <div class="alert alert-success">
                                 {{ session('message') }}
                             </div>
                             @endif
-                        </div>
-                        <div class="card-body">
                             @if($movies->count())
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>Movie Name</th>
-                                        <th>Movie Slug</th>
-                                        <th>Movie Poster</th>
-                                        <th>Movie Banner</th>
-                                        <th>Movie Length</th>
-                                        <th>Movie Link</th>
-                                        <th>Movie Youtube Trailer</th>
-                                        <th>Movie Quality</th>
-                                        <th>Movie Actors</th>
-                                        <th>Movie Scriptwriters</th>
-                                        <th>Movie Directors</th>
-                                        <th>Movie Countries</th>
-                                        <th>Movie Category</th>
-                                        <th>Movie Home Category</th>
-                                        <th>Movie Release Date</th>
-                                        <th>Movie Description</th>
-                                        <th>Movie Status</th>
+                                        <th>Filmin Adı</th>
+                                        <th>Film Slug</th>
+                                        <th>Filmin Posteri</th>
+                                        <th>Filmin Banneri</th>
+                                        <th>Filmin Müddəti</th>
+                                        <th>Filmin Linki</th>
+                                        <th>Filmin Youtube Traileri</th>
+                                        <th>Filmin Video Keyfiyyəti</th>
+                                        <th>Filmin Aktyorları</th>
+                                        <th>Filmin Sseanristləri</th>
+                                        <th>Filmin Rejissoru(ları)</th>
+                                        <th>Filmin Ölkəsi(ləri)</th>
+                                        <th>Filmin Keteqoriyası</th>
+                                     
+                                        <th>Filmin Ana Səhifə Keteqoriyası</th>
+                                        <th>Filmin Çıxış Tarixi</th>
+                                        <th>Filmin Açıqlaması</th>
+                                        <th>Filmin Statusu</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
@@ -80,7 +84,7 @@
                                         <td>{!! $movie->getTranslation('desc', app()->getLocale()) !!}</td>
                                         <td>
                                             @if($movie->status)
-                                            <div class="btn btn-danger swalDefaultError">active</div>
+                                            <div class="btn btn-primary swalDefaultError">active</div>
                                             @else
                                             <div class="btn btn-danger swalDefaultError">passive</div>
                                             @endif

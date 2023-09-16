@@ -28,16 +28,16 @@
                                         <tr>
                                             <th>Icon</th>
                                             <th>Logo</th>
-                                            <th>title</th>
-                                            <th>phone</th>
-                                            <th>desc</th>
-                                            <th>copywrite</th>
-                                            <th>facebook</th>
-                                            <th>instagram</th>
-                                            <th>linkedin</th>
-                                            <th>twitter</th>
-                                            <th>keywords</th>
-                                            <th>controlls</th>
+                                            <th>Başlıq</th>
+                                            <th>Telefon</th>
+                                            <th>Açıqlama</th>
+                                            <th>Copywrite</th>
+                                            <th>Facebook</th>
+                                            <th>İnstagram</th>
+                                            <th>Linkedin</th>
+                                            <th>Twitter</th>
+                                            <th>Açar Sözləri</th>
+                                            <th>Controlls</th>
                                         </tr>
                                     </thead>
                                     <tbody>

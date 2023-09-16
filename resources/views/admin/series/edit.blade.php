@@ -144,18 +144,7 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Movie quality:</label>
-                                <select name="quality" id="quality" class="form-control">
-                                    <option value="HD" {{ old('quality', $serie->quality) === 'HD' ? 'selected' : '' }}>HD</option>
-                                    <option value="HD" {{ old('quality', $serie->quality) === '4k' ? 'selected' : '' }}>4k</option>
-                                </select>
-                            </div>
-                            @error("quality")
-                            <div class="alert alert-danger mt-2" role="alert">
-                                {{ $message }}
-                            </div>
-                            @enderror
+                          
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie category:</label>
                                 <select name="movie_category_id" id="" class="form-control category-movie">

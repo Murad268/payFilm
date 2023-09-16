@@ -2,13 +2,14 @@
 @section('page_title', 'series')
 @section('content')
 <style>
-
- .card-body {
+    .card-body {
         overflow-x: scroll;
     }
+
     #example2 {
         width: max-content;
     }
+
     td,
     th,
     tr {
@@ -37,24 +38,23 @@
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>Movie Name</th>
-                                        <th>Movie Slug</th>
-                                        <th>Movie Poster</th>
-                                        <th>Movie Banner</th>
-                                        <th>Movie Length</th>
-                                        <th>Movie Link</th>
-                                        <th>Movie Youtube Trailer</th>
-                                        <th>Movie Quality</th>
-                                        <th>Movie Actors</th>
-                                        <th>Movie Scriptwriters</th>
-                                        <th>Movie Directors</th>
-                                        <th>Movie Countries</th>
-                                        <th>Movie Category</th>
-                                        <th>Movie Home Category</th>
-                                        <th>Movie Release Date</th>
-                                        <th>Movie Description</th>
-                                        <th>Season Count</th>
-                                        <th>Movie Status</th>
+                                        <th>Serialın Adı</th>
+                                        <th>Serial Slug</th>
+                                        <th>Serialın Posteri</th>
+                                        <th>Serialın Banneri</th>
+                                        <th>Serial Epizodunun ortalama müddəti</th>
+                                        <th>Serialın Linki</th>
+                                        <th>Serialın Youtube Traileri</th>
+                                        <th>Serialın Aktyorları</th>
+                                        <th>Serialın Ssenarstləri</th>
+                                        <th>Serialın Rejissoru(ları)</th>
+                                        <th>Serialın Ölkəsi(ləri)</th>
+                                        <th>Serialın Kategoriyası</th>
+                                        <th>Serialın Ana Səhifə Katqoriyası</th>
+                                        <th>Serialın Çıxış Tarixi</th>
+                                        <th>Serialın Açıqlaması</th>
+                                        <th>Sezonların Sayı</th>
+                                        <th>Serialın Statusu</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
@@ -71,7 +71,6 @@
                                         <td>{{ $serie->length}}</td>
                                         <td>{{ $serie->link }}</td>
                                         <td>{{$serie->ytrailer}}</td>
-                                        <td>{{$serie->quality}}</td>
                                         <td>{{ $serie->getTranslation('actors', app()->getLocale()) }}</td>
                                         <td>{{ $serie->getTranslation('scriptwriters', app()->getLocale()) }}</td>
                                         <td>{{ $serie->getTranslation('directors', app()->getLocale()) }}</td>
@@ -86,7 +85,7 @@
                                         </td>
                                         <td>
                                             @if($serie->status)
-                                            <div class="btn btn-danger swalDefaultError">active</div>
+                                            <div class="btn btn-primary swalDefaultError">active</div>
                                             @else
                                             <div class="btn btn-danger swalDefaultError">passive</div>
                                             @endif

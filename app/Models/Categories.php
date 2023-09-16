@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+
 class Categories extends Model
 {
     use HasFactory;
@@ -13,4 +15,23 @@ class Categories extends Model
     protected $guarded = [];
 
 
+
+    public function movies() {
+        return $this->hasMany(Movies::class, 'movie_category_id', 'id');
+    }
+
+    public function seires() {
+        return $this->hasMany(Series::class, 'movie_category_id', 'id');
+    }
+
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($movies) {
+            $movies->movies()->delete();
+            $movies->seires()->delete();
+        });
+    }
 }
