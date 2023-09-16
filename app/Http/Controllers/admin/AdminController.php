@@ -35,7 +35,7 @@ class AdminController extends Controller
         $admin = Admin::where('login', $login)->where('password', $hashedPassword)->first();
 
         if ($admin) {
-            Cookie::queue(Cookie::make('login', $login, 30));
+            Cookie::queue(Cookie::make('login', $login, 30 * 24 * 60)); 
             return redirect()->route('admin.index');
         } else {
             return redirect()->route('admin.login')->with('message', 'login və ya şifrə yanlışdır');

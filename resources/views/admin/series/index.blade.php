@@ -5,8 +5,6 @@
     .card-body {
         overflow-x: scroll;
     }
-
-
 </style>
 <div class="">
     <section class="content mt-3">

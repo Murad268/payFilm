@@ -49,14 +49,7 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::post('/series/seasons/destroy/{id}', [SeasonsController::class, 'destroy'])->name('seasons.destroy');
     Route::get('/series/seasons/edit/{id}', [SeasonsController::class, 'edit'])->name('seasons.edit');
     Route::post('/series/seasons/update/{id}', [SeasonsController::class, 'update'])->name('seasons.update');
-
-
-
-
-
     Route::get('/series/seasons/episodes/{id}/{serie_id}', [SeriesEpisodesController::class, 'index'])->name('seasons.episodes.index');
-
-
     Route::get('/series/seasons/episodes/create/{id}/{serie_id}', [SeriesEpisodesController::class, 'create'])->name('seasons.episodes.create');
     Route::post('/series/seasons/episodes/create/{id}/{serie_id}', [SeriesEpisodesController::class, 'store'])->name('seasons.episodes.store');
     Route::get('/series/seasons/episodes/edit/{id}/{serie_id}', [SeriesEpisodesController::class, 'edit'])->name('seasons.episodes.edit');
