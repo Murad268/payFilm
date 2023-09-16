@@ -1,7 +1,6 @@
 @extends('admin.back')
 @section('page_title', 'seasons')
 @section('content')
-
 <div class="">
     <section class="content mt-3">
         <div class="container-fluid">
