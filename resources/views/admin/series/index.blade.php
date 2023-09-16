@@ -7,10 +7,6 @@
     }
 
 
-
-    .not-found {
-        font-size: 30px;
-    }
 </style>
 <div class="">
     <section class="content mt-3">
@@ -50,6 +46,7 @@
                                         <th>Movie Home Category</th>
                                         <th>Movie Release Date</th>
                                         <th>Movie Description</th>
+                                        <th>Season Count</th>
                                         <th>Movie Status</th>
                                         <th>Controlls</th>
                                     </tr>
@@ -76,6 +73,10 @@
                                         <td>{{ $serie->movie_home_categories->cat_name }}</td>
                                         <td>{{$serie->release}}</td>
                                         <td>{!! $serie->getTranslation('desc', app()->getLocale()) !!}</td>
+                                        <td>
+                                            <div>{{$serie->serie_seasons()->count()}}</div>
+                                            <a href="{{route('admin.seasons.index', $serie->id)}}" style="width: max-content" class="mt-2 btn btn-primary">see seasons</a>
+                                        </td>
                                         <td>
                                             @if($serie->status)
                                             <div class="btn btn-danger swalDefaultError">active</div>

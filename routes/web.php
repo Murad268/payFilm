@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\DirectorsController;
 use App\Http\Controllers\admin\HomeCategoriesController;
 use App\Http\Controllers\admin\MoviesController;
 use App\Http\Controllers\admin\ScriptwriterController;
+use App\Http\Controllers\admin\SeasonsController;
 use App\Http\Controllers\admin\SeriesController;
 use App\Http\Controllers\admin\SettingsController;
 use Illuminate\Support\Facades\Route;
@@ -38,8 +39,7 @@ Route::group(['middleware' => 'adminlogin', 'prefix' => 'admin', 'as' => 'admin.
     Route::resource('/countries', CountriesController::class);
     Route::resource('/movies', MoviesController::class);
     Route::resource('/series', SeriesController::class);
-
-
 });
 
 
+Route::get('/admin/series/seasons/{id}', [SeasonsController::class, 'index'])->name('admin.seasons.index');

@@ -12,9 +12,6 @@
         width: max-content;
     }
 
-    .not-found {
-        font-size: 30px;
-    }
 </style>
 <div class="">
     <section class="content mt-3">
