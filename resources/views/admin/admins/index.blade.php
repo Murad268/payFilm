@@ -23,9 +23,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">
-                                <a href="" class="btn btn-primary">yeni admin əlavə et</a>
-                            </h3>
+                            @if($admin->status === 1)
+                            <a href="" class="btn btn-primary">yeni admin əlavə et</a>
+                            @endif
                         </div>
                         <div class="card-body">
                             @if($admins->count() > 0)
@@ -46,7 +46,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($admins as $admin)
+                                    <tr>
+                                        <td>{{$admin->name}}</td>
+                                        <td>{{$admin->surname}}</td>
+                                        <td>{{$admin->login}}</td>
+                                        <td>{{$admin->status}}</td>
+                                        <td>{{$admin->name}}</td>
+                                        <td>
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.categories.destroy', $admin->id)}}">
+                                                <a href="{{route('admin.categories.edit', $admin->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
 
+                                                @csrf
+                                                @method("delete")
+                                                <input class="btn btn-danger" value="sil" type="submit">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <div style="margin: 0 auto; width: max-content" class="pagination mt-2">

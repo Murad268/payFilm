@@ -45,7 +45,7 @@
                                             <div class="btn btn-danger swalDefaultError">passiv</div>
                                             @endif
                                         </td>
-                                        <td >
+                                        <td>
                                             <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.categories.destroy', $category->id)}}">
                                                 <a href="{{route('admin.categories.edit', $category->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
 
