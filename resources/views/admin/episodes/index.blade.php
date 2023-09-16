@@ -25,7 +25,6 @@
                                         <th>id</th>
                                         <th>Season Name</th>
                                         <th>Season Slug</th>
-                                        <th>Season Episodes</th>
                                         <th>Controlls</th>
                                     </tr>
                                 </thead>
@@ -36,9 +35,6 @@
                                         <td>{{ $episode->getTranslation('episode_name', app()->getLocale()) }}</td>
                                         <td>{{ $episode->getTranslation('slug', app()->getLocale()) }}</td>
                                         <td>
-                                        <td>
-                                            <a href="" style="width: max-content" class="mt-2 btn btn-primary">see episodes</a>
-                                        </td>
                                         </td>
                                         <td>
                                             <a href="{{route('admin.seasons.edit', $episode->id)}}" class="btn btn-warning text-light">Epizodu dəyiş</a>
