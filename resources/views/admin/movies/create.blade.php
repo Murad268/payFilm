@@ -123,7 +123,6 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                            @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie Link:</label>
                                 <input name="link" value="{{ old('link') }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
@@ -133,7 +132,6 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                            @endforeach
 
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie Youtube Trailer Link:</label>

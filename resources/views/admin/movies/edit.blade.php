@@ -131,17 +131,15 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                            @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie Link:</label>
                                 <input name="link" value="{{ old('link', $movie->link) }}" type="text" class="form-control" placeholder="Filmin uzunluğunu daxil edin">
                             </div>
-                            @error("link.$lang")
+                            @error("link")
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{ $message }}
                             </div>
                             @enderror
-                            @endforeach
 
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Movie Youtube Trailer Link:</label>

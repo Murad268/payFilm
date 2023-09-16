@@ -33,7 +33,7 @@
                                     @foreach($episodes as $episode)
                                     <tr>
                                         <td>{{ $episode->id }}</td>
-                                        <td>{{ $episode->getTranslation('season_name', app()->getLocale()) }}</td>
+                                        <td>{{ $episode->getTranslation('episode_name', app()->getLocale()) }}</td>
                                         <td>{{ $episode->getTranslation('slug', app()->getLocale()) }}</td>
                                         <td>
                                         <td>

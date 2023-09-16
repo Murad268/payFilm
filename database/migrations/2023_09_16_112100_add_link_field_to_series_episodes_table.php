@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('series_episodes', function (Blueprint $table) {
-            $table->string('link');
+            $table->string('column_name', 100)->change();
         });
     }
 

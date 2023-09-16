@@ -10,7 +10,7 @@ class SeriesEpisodes extends Model
 {
     use HasFactory;
     use HasTranslations;
-    public $translatable = ['episode_order', 'slug', "episode_name"];
+    public $translatable = ['slug', "episode_name"];
     protected $guarded = [];
     public $table = "series_episodes";
 }
