@@ -37,7 +37,7 @@
                                         <td>
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.seasons.edit', $episode->id)}}" class="btn btn-warning text-light">Epizodu dəyiş</a>
+                                            <a href="{{route('admin.seasons.episodes.edit', ['id' => $id,'serie_id' => $serie_id])}}" class="btn btn-warning text-light">Epizodu dəyiş</a>
                                             <form onsubmit="return deleteConfirmation(event)" class="mt-2" method="post" action="">
                                                 @csrf
                                                 <input class="btn btn-danger" value="delete" type="submit">

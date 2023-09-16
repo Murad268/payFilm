@@ -36,8 +36,34 @@ class SeriesEpisodesController extends Controller
                 'slug' => $request->slug,
                 'link' => $request->link
             ]);
-            return redirect()->route('admin.seasons.episodes.index', ['id' => $id,'serie_id' => $serie_id])->with("message", "the information was added to the database");;
+            return redirect()->route('admin.seasons.episodes.index', ['id' => $id, 'serie_id' => $serie_id])->with("message", "the information was added to the database");;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
 
+
+    public function edit($id, $serie_id)
+    {
+        $episode = SeriesEpisodes::findOrFail($serie_id);
+        $serie_id = $serie_id;
+        $id = $id;
+        return view('admin.episodes.update', compact('id', 'serie_id', 'episode'));
+    }
+
+    public function update(EpisodeRequest $request, $id, $serie_id)
+    {
+        try {
+            $season = SeriesEpisodes::findOrFail($id);
+            $season->update([
+                'episode_order' => (int)$request->episode_order,
+                'serie_id' => $request->serie_id,
+                "season_id" => $request->id,
+                'episode_name' => $request->episode_name,
+                'slug' => $request->slug,
+                'link' => $request->link
+            ]);
+            return redirect()->route('admin.episodes.index', $id)->with("message", "the information has been updated");;
         } catch (Exception $e) {
             echo $e->getMessage();
         }
