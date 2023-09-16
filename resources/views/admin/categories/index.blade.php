@@ -40,7 +40,9 @@
                                         <td>{{ $category->getTranslation('slug', app()->getLocale()) }}</td>
                                         <td>
                                             @if($category->status)
-                                            <div class="btn btn-danger swalDefaultError">active</div>
+                                            <div class="btn btn-primary swalDefaultError">active</div>
+                                            @else
+                                            <div class="btn btn-danger swalDefaultError">passive</div>
                                             @endif
                                         </td>
                                         <td>

@@ -203,13 +203,7 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                            <td>
-                                @if($category->status)
-                                <div class="btn btn-danger swalDefaultError">active</div>
-                                @else
-                                <div class="btn btn-danger swalDefaultError">passive</div>
-                                @endif
-                            </td>
+                       
                             @error('status')
                             <div class="alert alert-danger mt-2" role="alert">
                                 {{$message}}
