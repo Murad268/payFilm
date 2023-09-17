@@ -79,4 +79,20 @@ class AdminProccessController extends Controller
 
         return redirect()->back()->with('message', 'This username is already in use by another admin.');
     }
+
+
+    public function destroy($id)
+    {
+        $admin = Admin::find($id);
+
+        if (!$admin || ($admin->id == Auth::id())) {
+            return redirect()->route('admin.admins.index')->with('error', 'Admin hesabı silinemedi.');
+        }
+
+        $admin->delete();
+
+        Auth::logout();
+
+        return redirect()->route('admin.admins.index')->with('message', 'Admin hesabı başarıyla silindi.');
+    }
 }

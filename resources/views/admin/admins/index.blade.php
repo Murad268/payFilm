@@ -54,7 +54,7 @@
                                         <td>{{$admin->status}}</td>
                                         <td>{{$admin->name}}</td>
                                         <td>
-                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.categories.destroy', $admin->id)}}">
+                                            <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.admins.destroy', $admin->id)}}">
                                                 <a href="{{route('admin.admins.edit', $admin->id)}}" class="btn btn-warning text-light">Yenilə</a>
                                                 @csrf
                                                 @method("delete")

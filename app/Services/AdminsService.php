@@ -34,17 +34,20 @@ class AdminsService
             echo $e->getMessage();
         }
     }
-
     public function update($request, $id)
     {
         try {
             $data = $request->all();
             $admin = Admin::findOrFail($id);
-            if ($request->cookie('login') == $admin->login) {
-                Cookie::queue(Cookie::forget('login'));
+
+            // Eğer login değiştirildiyse, cookiedeki login'i güncelle
+            if ($data['login'] != $admin->login) {
+                Cookie::queue(Cookie::forever('login', $data['login']));
             }
 
+            // Eğer şifre değiştirildiyse, cookieden sil
             if ($data['password']) {
+                Cookie::queue(Cookie::forget('login'));
                 $data['password'] = $this->hashParola($request->password);
             } else {
                 $data['password'] = $admin->password;
@@ -55,6 +58,7 @@ class AdminsService
             echo $e->getMessage();
         }
     }
+
 
     public function delete($id)
     {
