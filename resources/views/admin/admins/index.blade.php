@@ -1,5 +1,5 @@
 @extends('admin.back')
-@section('page_title', 'seasons')
+@section('page_title', 'admins')
 @section('content')
 <style>
     .card-body {
@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-header">
                             @if($admin->status === 1)
-                            <a href="" class="btn btn-primary">yeni admin əlavə et</a>
+                            <a href="{{route('admin.admins.create')}}" class="btn btn-primary">yeni admin əlavə et</a>
                             @endif
                         </div>
                         <div class="card-body">
@@ -55,8 +55,7 @@
                                         <td>{{$admin->name}}</td>
                                         <td>
                                             <form style="display: flex; align-items: center; column-gap: 5px" onsubmit="return toHrefCat(event)" class="mt-2" method="post" action="{{route('admin.categories.destroy', $admin->id)}}">
-                                                <a href="{{route('admin.categories.edit', $admin->id)}}" class="btn btn-warning text-light">Kategoriyanı dəyiş</a>
-
+                                                <a href="{{route('admin.admins.edit', $admin->id)}}" class="btn btn-warning text-light">Yenilə</a>
                                                 @csrf
                                                 @method("delete")
                                                 <input class="btn btn-danger" value="sil" type="submit">
