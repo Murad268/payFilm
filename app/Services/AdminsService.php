@@ -34,28 +34,40 @@ class AdminsService
             echo $e->getMessage();
         }
     }
+
+
+
     public function update($request, $id)
     {
         try {
             $data = $request->all();
             $admin = Admin::findOrFail($id);
-
-            // Eğer login değiştirildiyse, cookiedeki login'i güncelle
-            if ($data['login'] != $admin->login) {
-                Cookie::queue(Cookie::forever('login', $data['login']));
-            }
-
-            // Eğer şifre değiştirildiyse, cookieden sil
-            if ($data['password']) {
-                Cookie::queue(Cookie::forget('login'));
-                $data['password'] = $this->hashParola($request->password);
-            } else {
-                $data['password'] = $admin->password;
-            }
-
-            $this->dataServices->save($admin, $data, 'update');
+            $data['password'] = $this->usedPassword($admin, $data);
+            Cookie::queue(Cookie::forget('login'));
         } catch (Exception $e) {
             echo $e->getMessage();
+        }
+    }
+
+
+    public function usedPassword($model, $data)
+    {
+        if (!empty($data["password"])) {
+            return $this->hashParola($data["password"]);
+        } else {
+            return $model->password;
+        }
+    }
+
+    public function isLogged($login)
+    {
+        $cookieLogin = Cookie::has("login");
+        if ($cookieLogin) {
+            if ($login == Cookie::get('login')) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 

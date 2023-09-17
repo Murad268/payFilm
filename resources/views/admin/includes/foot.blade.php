@@ -101,9 +101,9 @@
             confirmButtonText: 'Yes, exit!',
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = event.target.getAttribute('href');
+                event.target.submit();
             }
-        });
+        });;
     }
 
 

@@ -24,6 +24,9 @@ class adminHeaderComponent extends Component
     public function render(): View|Closure|string
     {
         $cookieValue = Cookie::get('login');
+        if (!$cookieValue) {
+            return redirect()->route('admin.login');
+        }
         $admin = Admin::where('login', $cookieValue)->first();
 
         return view('admin.components.admin-header-component', compact('admin'));

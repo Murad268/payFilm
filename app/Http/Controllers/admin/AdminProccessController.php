@@ -8,7 +8,6 @@ use App\Http\Requests\admins\AdminsRequestUpdate;
 use App\Models\Admin;
 use App\Services\AdminsService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
 class AdminProccessController extends Controller
@@ -53,46 +52,21 @@ class AdminProccessController extends Controller
         return view('admin.admins.edit', compact('admin'));
     }
 
+
+
+    
     public function update(AdminsRequestUpdate $request, $id)
     {
-        $findAdmin = Admin::where('login', $request->login)->first();
-
-        if (!$findAdmin || ($findAdmin->id == $id)) {
-            $this->adminsService->update($request, $id);
-
-            if ($request->has('password') || $request->has('login')) {
-                Auth::logout();
+        $findAdmin = Admin::findOrFail($id);
+        if ($findAdmin) {
+            if ($findAdmin->login != $request->login) {
+                $existingAdmin = Admin::where('login', $request->login)->where('id', '!=', $id)->first();
+                if ($existingAdmin) {
+                    return redirect()->back()->with('message', 'Belə bir login ilə admin artıq mövcuddur');
+                }
             }
-
-            return redirect()->route('admin.admins.index')->with("message", "Information updated in the database.");
         }
-
-        if ($findAdmin->id == Auth::id()) {
-            $this->adminsService->update($request, $id);
-
-            if ($request->has('password') || $request->has('login')) {
-                Auth::logout();
-            }
-
-            return redirect()->route('admin.admins.index')->with("message", "Information updated in the database.");
-        }
-
-        return redirect()->back()->with('message', 'This username is already in use by another admin.');
-    }
-
-
-    public function destroy($id)
-    {
-        $admin = Admin::find($id);
-
-        if (!$admin || ($admin->id == Auth::id())) {
-            return redirect()->route('admin.admins.index')->with('error', 'Admin hesabı silinemedi.');
-        }
-
-        $admin->delete();
-
-        Auth::logout();
-
-        return redirect()->route('admin.admins.index')->with('message', 'Admin hesabı başarıyla silindi.');
+        $this->adminsService->update($request, $id);
+        return redirect()->route('admin.admins.index')->with("message", "the information has been updated to the database");
     }
 }
